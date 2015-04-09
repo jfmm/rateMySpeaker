@@ -1,6 +1,6 @@
 // first ask for parameters
-var numOfEvaluations = parseInt(prompt("How many evaluations were turned in?")),
-    numOfSpeeches = parseInt(prompt("How many speeches in this program?"));
+//var numOfEvaluations = parseInt(prompt("How many evaluations were turned in?")),
+//    numOfSpeeches = parseInt(prompt("How many speeches in this program?"));
 
 
 
@@ -9,7 +9,7 @@ var speechList = [];
 
 for(var i = 1; i <= numOfSpeeches; i++ ) {
   
-  var speaker = prompt("Enter speaker's name of speech #" + i);
+  //var speaker = prompt("Enter speaker's name of speech #" + i);
   speechList.push(speaker);
 
 }
@@ -36,7 +36,7 @@ for(var i = 1; i <= numOfEvaluations; i++) {
       
       // get rating data
       var currentSpeaker = speechList[ii - 1];
-      var rating = parseInt(prompt("What did " + currentSpeaker + " get for eval #" + i));
+      //var rating = parseInt(prompt("What did " + currentSpeaker + " get for eval #" + i));
 
       //push name and rating to JSON object
       evaluationData["eval_" + i]["speech_" + ii].speaker_name = currentSpeaker;
