@@ -34,6 +34,7 @@ for(var i = 1; i <= numOfEvalutaions; i++) {
       var currentSpeaker = speechList[ii - 1];
       var rating = parseInt(prompt("What did " + currentSpeaker + " get for eval #" + i));
 
+      //push name and rating to JSON object
       evaluationData["eval_" + i]["speech_" + ii].speaker_name = currentSpeaker;
       evaluationData["eval_" + i]["speech_" + ii].rating = rating;
       
@@ -43,15 +44,46 @@ for(var i = 1; i <= numOfEvalutaions; i++) {
   } //end outer for
 
   
+var example = {
 
-//for(var evaluation in evaluationData) {
-//
-//  
-//  
-//  // this is how you access the damn object... duh
-//  //console.log(evaluationData[evaluation].speech_1.rating);
-//  
-//}
+  eval_1 : {
+    speech_1: {
+      rating: 2,
+      speaker_name: "yo"
+    },
+    speech_2 : {
+      rating: 4,
+      speaker_name: "hey"
+    }
+  },
+  
+  eval_2: {
+    speech_1: {
+      rating: 2,
+      speaker_name: "yo"
+    },
+    speech_2 : {
+      rating: 4,
+      speaker_name: "hey"
+    }  
+  }
+  
+  
+};
+
+
+
+
+
+
+for(var evaluation in evaluationData) {
+
+  
+  // this is how you access the damn object... duh
+ // console.log(evaluationData[evaluation].speech_1.speaker_name);
+  
+}
+
 
 
 
