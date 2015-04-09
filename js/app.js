@@ -1,5 +1,5 @@
 // first ask for parameters
-var numOfEvalutaions = parseInt(prompt("How many evaluations were turned in?")),
+var numOfEvaluations = parseInt(prompt("How many evaluations were turned in?")),
     numOfSpeeches = parseInt(prompt("How many speeches in this program?"));
 
 
@@ -16,10 +16,14 @@ for(var i = 1; i <= numOfSpeeches; i++ ) {
 
 
 
+
+/*
+* Create JSON object with input data
+*/
 var ratings = [];
 var evaluationData = {};
 
-for(var i = 1; i <= numOfEvalutaions; i++) {
+for(var i = 1; i <= numOfEvaluations; i++) {
   
   // create evaluation nested object
   evaluationData["eval_" + i] = {}; 
@@ -44,104 +48,42 @@ for(var i = 1; i <= numOfEvalutaions; i++) {
   } //end outer for
 
   
-var example = {
-
-  eval_1 : {
-    speech_1: {
-      rating: 2,
-      speaker_name: "yo"
-    },
-    speech_2 : {
-      rating: 4,
-      speaker_name: "hey"
-    }
-  },
-  
-  eval_2: {
-    speech_1: {
-      rating: 2,
-      speaker_name: "yo"
-    },
-    speech_2 : {
-      rating: 4,
-      speaker_name: "hey"
-    }  
-  }
-  
-  
-};
 
 
 
+/*
+* Calculate cumulative results.
+*/
 
-
+var evalId = 1;
+var speechTotalScores = {};
 
 for(var evaluation in evaluationData) {
 
-  
-  // this is how you access the damn object... duh
- // console.log(evaluationData[evaluation].speech_1.speaker_name);
-  
+  for (var speech in evaluationData[evaluation]) {
+
+    // if we're looping through first evaluation, just assign the properties
+    if(evalId === 1)
+      speechTotalScores[speech] = evaluationData[evaluation][speech].rating;
+    //else we add the current rating to the last rating to accumulate the results
+    else 
+      speechTotalScores[speech] += evaluationData[evaluation][speech].rating;        
+
+  }
+    
+  evalId++;
+}
+
+
+/*
+* Calculate average score per speech.
+*/
+for(var sp in speechTotalScores) {
+
+  console.log(sp + " total : " + speechTotalScores[sp]);
+  console.log(sp + " average : " + (speechTotalScores[sp] / numOfEvaluations));
 }
 
 
 
-
-
-
-
-/* separate
-==============================================*/
-
-//IDEAL if it could be turned to this JSON OBJECT
-var ideal = {
-  
-  speaker1: {
-    name: "Bill Thomas",
-    1: 5,
-    2: 4,
-    3: 7
-  },
-    
-  speaker2: {
-    name: "Walter Olezek",
-    1: 7,
-    2: 6,
-    3: 2
-  }
-
-};
-
-
-
-var speakerAverages = [];
-
-// loop over JSON object and compute average score per speaker
-for (var spkr in ideal) {
-  
-  var evalEntry = 1,
-      sum = 0,
-      avg = 0;
-  
-
-  for (var score in ideal[spkr]) {
- 
-    // if score is a name property, we skip
-    if(score === "name") continue;
-    
-    // compute average
-    sum += ideal[spkr][evalEntry];
-    avg = (sum / numOfEvalutaions).toFixed(2);
-    
-
-    // just output the average once all the computations have been done
-    if(evalEntry == Object.keys(ideal[spkr]).length - 1)
-      console.log(ideal[spkr].name + " average: " + avg);
-    
-    
-    evalEntry++;
-  
-  }
-  
-}
   
