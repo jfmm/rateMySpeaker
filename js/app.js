@@ -1,17 +1,159 @@
-// first ask for parameters
-//var numOfEvaluations = parseInt(prompt("How many evaluations were turned in?")),
-//    numOfSpeeches = parseInt(prompt("How many speeches in this program?"));
+var numOfEvaluations = 0,
+    numOfSpeeches = 0;
+
+var mainInput = document.getElementById("main-input"),
+    nextBtn = document.getElementById("next-btn"),
+    mainLabel = document.getElementById("main-label"),
+    promptStatus = "eval number";
 
 
 
-// Ask for speakers names
-var speechList = [];
+/*
+* Map enter key to click event only if the input is focused
+*/
+mainInput.onkeyup = function(e) {
+  // if input is focues
+  if(this === document.activeElement && e.keyCode == 13) {
+      nextBtn.click();
+  }
+}
 
-for(var i = 1; i <= numOfSpeeches; i++ ) {
+
+
+
+
+/**This method checks the status of the data input process and 
+/**adds the appropiate event listener
+ * */
+setPromptStatus(promptStatus); // check prompt status onload
+
+function setPromptStatus(status) {
   
-  //var speaker = prompt("Enter speaker's name of speech #" + i);
-  speechList.push(speaker);
+  if( status == "eval number") 
+  {
+    nextBtn.onclick = getEvalNumber;
+  }
+  else if ( status == "speech number") 
+  {
+    nextBtn.onclick = getSpeechNumber;
+  }
+  else if (status == "speaker names") 
+  {
+    nextBtn.onclick = getSpeakerNames;
+  }
 
+}
+
+
+/*
+** Get number of evaluations in program
+ * */
+function getEvalNumber() {
+
+  if(mainInput.value !== "" && mainInput.value >= 1) {
+    
+    // set num of evals
+    numOfEvaluations = parseInt(mainInput.value);
+
+    //reset input field
+    mainInput.value = "";
+
+    //change the status of the prompt process to "speech number"
+    promptStatus = "speech number";
+    setPromptStatus(promptStatus);
+    
+    // change label
+    mainLabel.innerHTML = "How many speeches in this program?"
+    
+    
+    console.log("evaluation number: " + numOfEvaluations);
+  
+
+  } else if ( mainInput.value == "") {
+  
+    mainLabel.innerHTML = "You have not entered a valid numeric value. Please try again"
+    mainLabel.style.color = "red";
+  }
+  
+  else {
+  
+    mainLabel.innerHTML = "You have entered a negative value... C'mon. Please try again"
+    mainLabel.style.color = "red";
+  
+  }
+    
+
+}
+
+
+
+/**Get number of speeches given
+ * */
+function getSpeechNumber () {
+  
+  console.log("getspeech triggered");
+
+  if (promptStatus == "speech number") {
+   
+  
+    
+    // set num of evals
+    numOfSpeeches = parseInt(mainInput.value);
+
+    //reset input field
+    mainInput.value = "";
+    
+    //change the status of the prompt process to "speaker names"
+    promptStatus = "speaker names";
+    setPromptStatus(promptStatus);
+    
+    console.log("speeches: " + numOfSpeeches);
+    
+    
+  
+  }
+  
+}
+
+
+
+
+/**Get names of speakers
+ * */
+var speechList = [],
+    speechIndex = 1,
+    speaker;
+
+function getSpeakerNames() {
+  mainLabel.innerHTML = "Enter speaker's name who did speech #" + speechIndex;
+  console.log("get speaker names triggered");
+
+  if (speechIndex === 1) {
+    console.log("first execution of get speaker names");
+    
+    //change input type to text
+    mainInput.removeAttribute("min");
+    mainInput.setAttribute("type", "text");
+  
+  } else {
+    
+    mainLabel.innerHTML = "Enter speaker's name who did speech #" + speechIndex;
+  
+  }
+  
+    
+  if( speechIndex <= numOfSpeeches) {
+    speaker = mainInput.value;
+    speechList.push(speaker);
+    speechIndex++;
+    console.log(mainInput.value);
+    console.log(speechIndex);
+  
+  }
+  
+  //reset input field
+  mainInput.value = "";
+  
 }
 
 
