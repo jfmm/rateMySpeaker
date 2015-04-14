@@ -110,7 +110,12 @@ function getSpeechNumber () {
     console.log("speeches: " + numOfSpeeches);
     
     
-  
+    // Prepare input view for next step in the process....
+    mainLabel.innerHTML = "Enter speaker's name who did speech #" + 1;
+    
+    //change input type to text
+    mainInput.removeAttribute("min");
+    mainInput.setAttribute("type", "text");
   }
   
 }
@@ -125,29 +130,20 @@ var speechList = [],
     speaker;
 
 function getSpeakerNames() {
-  mainLabel.innerHTML = "Enter speaker's name who did speech #" + speechIndex;
-  console.log("get speaker names triggered");
-
-  if (speechIndex === 1) {
-    console.log("first execution of get speaker names");
+      
     
-    //change input type to text
-    mainInput.removeAttribute("min");
-    mainInput.setAttribute("type", "text");
-  
-  } else {
+  if( speechIndex <= numOfSpeeches && mainInput.value !== "") {
     
-    mainLabel.innerHTML = "Enter speaker's name who did speech #" + speechIndex;
+    console.log(speechIndex);
+    mainLabel.innerHTML = "Enter speaker's name who did speech #" + ( ++speechIndex );
+    speaker = mainInput.value;
+    speechList.push(speaker);  
   
   }
-  
+  else {
     
-  if( speechIndex <= numOfSpeeches) {
-    speaker = mainInput.value;
-    speechList.push(speaker);
-    speechIndex++;
-    console.log(mainInput.value);
-    console.log(speechIndex);
+    mainLabel.innerHTML = "You have not entered a name. Try again"
+    mainLabel.style.color = "red";
   
   }
   
