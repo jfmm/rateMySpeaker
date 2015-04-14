@@ -50,7 +50,7 @@
             <td><button ng-click="speech.total_score = speech.total_score + 6">6</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 7">7</button></td>
             <td>{{speech.total_score}}</td>
-            <td>{{speech.average_score = speech.total_score / ratingData.numOfEvaluations}}</td> 
+            <td>{{speech.average_score = speech.total_score / ratingData.numOfEvaluations | number: 2}}</td> 
           </tr>
         </tbody>
       </thead>
