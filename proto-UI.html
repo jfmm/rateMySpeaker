@@ -15,6 +15,12 @@
 </head>
 <body ng-cloak>
   <section id="main-container" ng-controller="rate">
+    <label for="numOfEvals">NUMBER OF EVALUATIONS</label>
+    <input id="numOfEvals" type="number" min="1" ng-model="ratingData.numOfEvaluations">
+    
+    <label for="numOfSpeeches">NUMBER OF SPEECHES</label>
+    <input id="numOfSpeeches" type="number" min="1">
+    
     <table id="main-table" ng-cloak>
       <thead>
         <tr>
@@ -27,12 +33,15 @@
           <td></td>
           <td></td>
           <td></td>
-          <td>Total Score</td>
+          <td></td>
+          <td>Total</td>
+          <td>Average</td>
         </tr>
         <tbody ng-repeat="speech in ratingData" ng-cloak>
-          <tr>
-            <td>Speech # {{$index + 1}}</td>
+          <tr ng-if="!$first">
+            <td>Speech # {{$index}}</td>
             <td>{{speech.speaker_name}}</td>
+             <td><button ng-click="speech.total_score = speech.total_score + 0">0</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 1">1</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 2">2</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 3">3</button></td>
@@ -40,11 +49,16 @@
             <td><button ng-click="speech.total_score = speech.total_score + 5">5</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 6">6</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 7">7</button></td>
-            <td>{{speech.total_score}}</td> 
+            <td>{{speech.total_score}}</td>
+            <td>{{speech.average_score = speech.total_score / ratingData.numOfEvaluations}}</td> 
           </tr>
         </tbody>
       </thead>
     </table>
+   <div class="debug" style="text-align:left;">
+      <pre ng-bind="ratingData | json">
+      </pre>
+    </div>
   </section>
 <footer>
 </footer>
