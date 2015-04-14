@@ -16,14 +16,30 @@ html {
   font-size: 2.8em;
 }
 
-.main-label {
-  display: block;
-}
+
 
 label {
   color: #e67e22;
   font-weight: 100;
   font-size: 0.8em;
+}
+
+input[type="number"] {
+  width: 30px;
+  height: 38px;
+  text-align: center;
+  padding-left: 10px;
+  background-color: #ecf0f1;
+  color: #454545;
+  border: 1px solid #d3d3d3;
+  border-radius: 50%;
+  
+}
+
+input[type="number"]:focus {
+  background-color: white;
+  color: black;
+  border-color: black;
 }
 
 
