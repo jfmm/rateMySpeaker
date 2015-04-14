@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="rateMySpeaker">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Seminar Speaker Rating</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <section id="main-container" ng-controller="rate">
+    <table id="main-table">
+      <thead>
+        <tr>
+          <td>Speech Number</td>
+          <td>Speaker Name</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Total Score</td>
+        </tr>
+        <tbody>
+          <tr>
+            <td>Speech #1</td>
+            <td>Bill Thomas</td>
+            <td><button data-value="0" ng-click="add($event)">0</button></td>
+            <td><button data-value="1" ng-click="add($event)">1</button></td>
+            <td><button data-value="2" ng-click="add($event)">2</button></td>
+            <td><button data-value="3" ng-click="add($event)">3</button></td>
+            <td><button data-value="4" ng-click="add($event)">4</button></td>
+            <td><button data-value="5" ng-click="add($event)">5</button></td>
+            <td><button data-value="6" ng-click="add($event)">6</button></td>
+            <td><button data-value="7" ng-click="add($event)">7</button></td>
+            <td>{{ totalScore }}</td>
+            
+          </tr>
+           <tr>
+            <td>Speech #2</td>
+            <td>Hisham Melhem</td>
+            <td><button data-value="0" ng-click="add($event)">0</button></td>
+            <td><button data-value="1" ng-click="add($event)">1</button></td>
+            <td><button data-value="2" ng-click="add($event)">2</button></td>
+            <td><button data-value="3" ng-click="add($event)">3</button></td>
+            <td><button data-value="4" ng-click="add($event)">4</button></td>
+            <td><button data-value="5" ng-click="add($event)">5</button></td>
+            <td><button data-value="6" ng-click="add($event)">6</button></td>
+            <td><button data-value="7" ng-click="add($event)">7</button></td>
+            <td>{{ totalScore }}</td>
+            
+          </tr>
+      
+        </tbody>
+      </thead>
+    </table>
+  </section>
+<footer>
+</footer>
+<script src="js/angular.min.js"></script>  
+<script src="js/app-ng.js"></script>
+</body>
+</html>
