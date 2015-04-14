@@ -11,10 +11,14 @@ angular.module('rateMySpeaker', [])
     },
     "speech_2" : {
       "speaker_name": "Hisham Melhem",
-      "total_score" : 0,
+      "total_score" : 10,
       "average_score" : 0
     },
-    
+     "speech_3" : {
+      "speaker_name": "Martin Russo",
+      "total_score" : 2,
+      "average_score" : 0
+    },
   
   };
   
@@ -25,11 +29,11 @@ angular.module('rateMySpeaker', [])
   /*
   * Adds total
   **/
-  $scope.totalScore = 0;
+  //$scope.totalScore = 0;
   
   $scope.add = function(e) {
-    
-    $scope.totalScore += parseInt(e.toElement.dataset.value);
+   
+  //$scope.ratingData.total_score += parseInt(e.toElement.dataset.value);
    
   }
   

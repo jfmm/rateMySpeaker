@@ -10,10 +10,12 @@
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="js/angular.min.js"></script>  
+  <script src="js/app-ng.js"></script>
 </head>
-<body>
+<body ng-cloak>
   <section id="main-container" ng-controller="rate">
-    <table id="main-table">
+    <table id="main-table" ng-cloak>
       <thead>
         <tr>
           <td>Speech Number</td>
@@ -25,46 +27,27 @@
           <td></td>
           <td></td>
           <td></td>
-          <td></td>
           <td>Total Score</td>
         </tr>
-        <tbody>
+        <tbody ng-repeat="speech in ratingData" ng-cloak>
           <tr>
-            <td>Speech #1</td>
-            <td>Bill Thomas</td>
-            <td><button data-value="0" ng-click="add($event)">0</button></td>
-            <td><button data-value="1" ng-click="add($event)">1</button></td>
-            <td><button data-value="2" ng-click="add($event)">2</button></td>
-            <td><button data-value="3" ng-click="add($event)">3</button></td>
-            <td><button data-value="4" ng-click="add($event)">4</button></td>
-            <td><button data-value="5" ng-click="add($event)">5</button></td>
-            <td><button data-value="6" ng-click="add($event)">6</button></td>
-            <td><button data-value="7" ng-click="add($event)">7</button></td>
-            <td>{{ totalScore }}</td>
-            
+            <td>Speech # {{$index + 1}}</td>
+            <td>{{speech.speaker_name}}</td>
+            <td><button ng-click="speech.total_score = speech.total_score + 1">1</button></td>
+            <td><button ng-click="speech.total_score = speech.total_score + 2">2</button></td>
+            <td><button ng-click="speech.total_score = speech.total_score + 3">3</button></td>
+            <td><button ng-click="speech.total_score = speech.total_score + 4">4</button></td>
+            <td><button ng-click="speech.total_score = speech.total_score + 5">5</button></td>
+            <td><button ng-click="speech.total_score = speech.total_score + 6">6</button></td>
+            <td><button ng-click="speech.total_score = speech.total_score + 7">7</button></td>
+            <td>{{speech.total_score}}</td> 
           </tr>
-           <tr>
-            <td>Speech #2</td>
-            <td>Hisham Melhem</td>
-            <td><button data-value="0" ng-click="add($event)">0</button></td>
-            <td><button data-value="1" ng-click="add($event)">1</button></td>
-            <td><button data-value="2" ng-click="add($event)">2</button></td>
-            <td><button data-value="3" ng-click="add($event)">3</button></td>
-            <td><button data-value="4" ng-click="add($event)">4</button></td>
-            <td><button data-value="5" ng-click="add($event)">5</button></td>
-            <td><button data-value="6" ng-click="add($event)">6</button></td>
-            <td><button data-value="7" ng-click="add($event)">7</button></td>
-            <td>{{ totalScore }}</td>
-            
-          </tr>
-      
         </tbody>
       </thead>
     </table>
   </section>
 <footer>
 </footer>
-<script src="js/angular.min.js"></script>  
-<script src="js/app-ng.js"></script>
+
 </body>
 </html>
