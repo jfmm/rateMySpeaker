@@ -5,6 +5,18 @@ angular.module('rateMySpeaker', [])
   $scope.numOfSpeeches = 0;
   
   
+  /* 
+  * Show Main table UI if the number of Evaluations has been set
+  **/
+  $scope.showTableUI = function() {
+    if($scope.numOfEvaluations > 0) 
+      return true;
+    else
+      return false;
+  };
+  
+  
+  
   
   /* 
   * add speeches

@@ -16,7 +16,7 @@
 </head>
 <body ng-controller="rate">
   <div class="toolbar">
-    <div>
+    <div class="evalControls">
       <label for="numOfEvals">Number of Evaluations</label>
       <input id="numOfEvals" type="number" min="1" ng-model="numOfEvaluations">
     </div>
@@ -31,7 +31,7 @@
       <div>{{ numOfSpeeches}}</div>
     
      
-    <table id="main-table">
+    <table ng-show="showTableUI()" id="main-table">
       <thead>
         <tr>
           <td>Speech Number</td>
@@ -44,13 +44,12 @@
           <td></td>
           <td></td>
           <td></td>
-          <td>Total</td>
           <td>Average</td>
         </tr>
         <tbody ng-repeat="speech in ratingData">
           <tr>
             <td>Speech # {{$index + 1}}</td>
-            <td><input type="text" value="{{speech.speaker_name}}" ng-model="speech.speaker_name"></td>
+            <td><input class="placeholder" type="text" value="{{speech.speaker_name}}" ng-model="speech.speaker_name"></td>
             <td><button ng-click="speech.total_score = speech.total_score + 0">0</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 1">1</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 2">2</button></td>
@@ -59,8 +58,7 @@
             <td><button ng-click="speech.total_score = speech.total_score + 5">5</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 6">6</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 7">7</button></td>
-            <td>{{speech.total_score}}</td>
-            <td>{{speech.average_score = speech.total_score / numOfEvaluations | number: 2}}</td> 
+            <td class="avg-output">{{speech.average_score = speech.total_score / numOfEvaluations | number: 2}}</td> 
           </tr>
         </tbody>
       </thead>
