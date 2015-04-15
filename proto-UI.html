@@ -51,8 +51,11 @@
         <tbody ng-repeat="speech in ratingData">
           <tr>
             <td><span ng-show="isActive($index)" class="active-indicator"></span>Speech # {{$index + 1}}</td>
-            <td><input class="placeholder" type="text" value="{{speech.speaker_name}}" ng-model="speech.speaker_name" ng-blur="saveSpeakerName($event)"></td>
+            <td>
+              <input class="placeholder" type="text" value="{{speech.speaker_name}}" ng-model="speech.speaker_name" ng-blur="saveSpeakerName($event)">
+            </td>
             
+            <!-- rating buttons -->
             <td>
               <button ng-click="speech.total_score = speech.total_score + 0; updateCounter()" ng-disabled="!isActive($index)">0</button>
             </td>

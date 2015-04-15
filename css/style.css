@@ -128,8 +128,25 @@ tbody td {
   width: 10px;
   display: inline-block;
   border-radius: 50%;
-  margin-right: 5px; 
+  margin-right: 5px;
+  
+  -webkit-animation: pulse 1s linear 0s infinite alternate;
+     -moz-animation: pulse 1s linear 0s infinite alternate;
+       -o-animation: pulse 1s linear 0s infinite alternate;
+          animation: pulse 1s linear 0s infinite alternate;
 }
+
+@-webkit-keyframes pulse { from { background-color: #FF4081;  } to { background-color: #fdbad1; }  }
+   @-moz-keyframes pulse { from { background-color: #FF4081; } to { background-color: #fdbad1; }  }
+     @-o-keyframes pulse { from { background-color: #FF4081; } to { background-color: #fdbad1; }  }
+        @keyframes pulse { from { background-color: #FF4081; } to { background-color: #fdbad1; }  }
+
+/*
+*TODO!!!! LETS HAVE THE ACTIVE INDICATOR ANIMATE FROM HOT PINK TO LIGHT PINK IN A PULSING FASHION
+* IT WILL CATCH THE ATTENTION
+*
+*/
+
 
 .placeholder {
   color: #939393;
