@@ -1,8 +1,6 @@
 angular.module('rateMySpeaker', [])
   .controller('rate', function ($scope) {
-  
 
-  
   $scope.numOfEvaluations = 0;
   $scope.numOfSpeeches = 0;
   
@@ -33,6 +31,7 @@ angular.module('rateMySpeaker', [])
     --$scope.numOfSpeeches;  //decrease speech count in UI
     var lastElemet = $scope.ratingData.pop();
   }
+  
   
 
 }); // end of module
