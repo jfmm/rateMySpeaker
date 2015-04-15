@@ -10,23 +10,27 @@
   <meta name="mobile-web-app-capable" content="yes">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
   <script src="js/angular.min.js"></script>  
   <script src="js/app-ng.js"></script>
 </head>
-<body>
-  
-  <section id="main-container" ng-controller="rate">
-<h1 class="app-title">Seminar Speaker Rating</h1>
+<body ng-controller="rate">
+  <div class="toolbar">
+    <div>
       <label for="numOfEvals">Number of Evaluations</label>
       <input id="numOfEvals" type="number" min="1" ng-model="numOfEvaluations">
-
+    </div>
     
- 
-      <label for="numOfSpeeches">Number of Speeches</label>
+    <div class="speechControls"><button class="action-btn" ng-click="addSpeech()">+</button><button class="action-btn" ng-click="removeSpeech()">-</button>
+</div>
+  </div>
+  <section id="main-container" >
+      <h1 class="app-title">Seminar Speaker Rating</h1>
+    
+   <span>Number of Speeches</span>
       <div>{{ numOfSpeeches}}</div>
     
-      <button ng-click="addSpeech()">+</button><button ng-click="removeSpeech()">-</button>
-
+     
     <table id="main-table">
       <thead>
         <tr>
