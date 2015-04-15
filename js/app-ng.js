@@ -8,17 +8,30 @@ angular.module('rateMySpeaker', [])
   
   
   
-  
-  $scope.ratingData = [];
+  /* 
+  * add speeches
+  **/
+  $scope.ratingData = []; //will containt JSON Object
   
   $scope.addSpeech = function() {
     
-    $scope.ratingData.push({
-      "speaker_name": "New Speaker",
-      "total_score" : 0,
-      "average_score" : 0
-    });
+      ++$scope.numOfSpeeches; // increase speech count in UI
 
+      $scope.ratingData.push({
+        "speaker_name": "New Speaker",
+        "total_score" : 0,
+        "average_score" : 0
+      });
+  }
+  
+  
+  /* 
+  * remove speeches
+  **/
+  $scope.removeSpeech = function() {
+    
+    --$scope.numOfSpeeches;  //decrease speech count in UI
+    var lastElemet = $scope.ratingData.pop();
   }
   
 

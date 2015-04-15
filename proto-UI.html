@@ -16,13 +16,15 @@
 <body>
   <section id="main-container" ng-controller="rate">
 
-      <label for="numOfEvals">NUMBER OF EVALUATIONS</label>
+      <label for="numOfEvals">Number of Evaluations</label>
       <input id="numOfEvals" type="number" min="1" ng-model="numOfEvaluations">
 
     
  
-      <label for="numOfSpeeches">NUMBER OF SPEECHES</label>
-      <input id="numOfSpeeches" type="number" min="1" ng-model="numOfSpeeches" ng-change="addSpeech()">
+      <label for="numOfSpeeches">Number of Speeches</label>
+      <div>{{ numOfSpeeches}}</div>
+    
+      <button ng-click="addSpeech()">+</button><button ng-click="removeSpeech()">-</button>
 
     <table id="main-table">
       <thead>
@@ -44,7 +46,7 @@
           <tr>
             <td>Speech # {{$index + 1}}</td>
             <td><input type="text" value="{{speech.speaker_name}}" ng-model="speech.speaker_name"></td>
-             <td><button ng-click="speech.total_score = speech.total_score + 0">0</button></td>
+            <td><button ng-click="speech.total_score = speech.total_score + 0">0</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 1">1</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 2">2</button></td>
             <td><button ng-click="speech.total_score = speech.total_score + 3">3</button></td>
