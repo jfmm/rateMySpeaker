@@ -83,7 +83,7 @@ input[type="text"] {
 
 .action-btn {
   margin-right: 20px;
-  margin-top: 30px;
+  margin-top: 33px;
   background-color: #FF4081;
   height: 50px;
   width: 50px;
@@ -139,6 +139,14 @@ tbody td {
   border-left: none;
   border-bottom: 1px solid #939393;
   padding-bottom: 8px;
+}
+
+.saved {
+  color: #C2185B !important;
+  border: none !important;
+  background-color: #ecf0f1;
+  font-weight: bold;
+
 }
 
 td button {

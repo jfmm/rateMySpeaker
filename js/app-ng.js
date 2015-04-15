@@ -45,10 +45,11 @@ angular.module('rateMySpeaker', [])
   
   /* 
   * Show Main table UI if the number of Evaluations has been set
+  * aka if the var is not 0
   **/
   $scope.showTableUI = function() {
     
-    if($scope.numOfEvaluations > 0) 
+    if($scope.numOfEvaluations != 0) 
       return true;
     else
       return false;
@@ -84,5 +85,13 @@ angular.module('rateMySpeaker', [])
   }
   
    
-
+  /* 
+  * Handles when user edits speaker name input field
+  **/
+  $scope.saveSpeakerName = function(event) {
+    
+    event.target.setAttribute("class", "saved");
+    
+  }
+  
 }); // end of module
