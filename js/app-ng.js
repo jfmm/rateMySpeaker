@@ -4,11 +4,50 @@ angular.module('rateMySpeaker', [])
   $scope.numOfEvaluations = 0;
   $scope.numOfSpeeches = 0;
   
+  $scope.loopCount = $scope.numOfEvaluations * $scope.numOfSpeeches;
+  $scope.evalCounter = 1;
+  
+ 
+ 
+   /* 
+  * Loop over evaluations.
+  **/
+  var currentSpeech = 1;
+  $scope.updateCounter = function() {
+ 
+
+    // if we go overboard....
+    if(currentSpeech >= $scope.numOfSpeeches) {
+      
+      //$scope.evalCounter++;
+      currentSpeech = 0; //reset
+    }
+    
+     ++currentSpeech; 
+    
+    console.log("speech: " + currentSpeech);
+  }
+  
+  
+  /* 
+  * Handle active state
+  **/
+  $scope.isActive = function(index) {
+    
+    if((index + 1) === currentSpeech)
+      return true;
+     
+  }
+  
+  
+  
+  
   
   /* 
   * Show Main table UI if the number of Evaluations has been set
   **/
   $scope.showTableUI = function() {
+    
     if($scope.numOfEvaluations > 0) 
       return true;
     else
@@ -44,6 +83,6 @@ angular.module('rateMySpeaker', [])
     var lastElemet = $scope.ratingData.pop();
   }
   
-  
+   
 
 }); // end of module
