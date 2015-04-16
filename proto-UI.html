@@ -27,10 +27,9 @@
   <section id="main-container" >
       <h1 class="app-title">Seminar Speaker Rating</h1>
     
-   <span>Number of Speeches</span>
-      <div>{{ numOfSpeeches}}</div>
+    <span>Number of Speeches <span class="avg-output">{{ numOfSpeeches}}</span></span>
     
-     <span>You're currently on evaluation {{evalCounter}} out of {{numOfEvaluations}}<span>
+    <div>You're currently on evaluation <span class="avg-output">{{evalCounter}}</span> out of {{numOfEvaluations}}<div>
      
   
     <table ng-show="showTableUI()" id="main-table">
@@ -94,6 +93,7 @@
         </tbody>
       </thead>
     </table>
+      <button ng-show="isGradingDone()" class="get-results-btn">Ranking Results</button>
 <!--
    <div class="debug" style="text-align:left;">
       <pre ng-bind="ratingData | json">

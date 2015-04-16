@@ -141,11 +141,6 @@ tbody td {
      @-o-keyframes pulse { from { background-color: #FF4081; } to { background-color: #fdbad1; }  }
         @keyframes pulse { from { background-color: #FF4081; } to { background-color: #fdbad1; }  }
 
-/*
-*TODO!!!! LETS HAVE THE ACTIVE INDICATOR ANIMATE FROM HOT PINK TO LIGHT PINK IN A PULSING FASHION
-* IT WILL CATCH THE ATTENTION
-*
-*/
 
 
 .placeholder {
@@ -199,4 +194,21 @@ td button[disabled] {
 .avg-output {
   color: #FF4081;
   font-weight: 500;
+}
+
+.get-results-btn {
+  margin-top: 40px;
+  background-color: #FF4081;
+  color: #FFF;
+  padding: 10px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 100;
+  border: none;
+  border-radius: 2px;
+  transition: 0.2s ease-in all;
+  -webkit-box-shadow:  0px 3px 4px 0px #B0B0B0;
+  -moz-box-shadow:  0px 3px 4px 0px #B0B0B0;
+        box-shadow:  0px 3px 4px 0px #B0B0B0;
+
 }

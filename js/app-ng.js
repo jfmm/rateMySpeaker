@@ -3,34 +3,51 @@ angular.module('rateMySpeaker', [])
 
   $scope.numOfEvaluations = 0;
   $scope.numOfSpeeches = 0;
-  
-  $scope.loopCount = $scope.numOfEvaluations * $scope.numOfSpeeches;
+
   $scope.evalCounter = 1;
   
  
  
    /* 
-  * Loop over evaluations.
+  * Loop over speeches and evaluations.
   **/
   var currentSpeech = 1;
+  
   $scope.updateCounter = function() {
  
 
-    // if we go overboard....
+    // if we finish inputing an evaluation....
     if(currentSpeech >= $scope.numOfSpeeches) {
       
-      //$scope.evalCounter++;
-      currentSpeech = 0; //reset
-    }
+      $scope.evalCounter++; // increase evalutaion #
+      currentSpeech = 0; //reset speech #
+    } 
     
+  
      ++currentSpeech; 
     
-    console.log("speech: " + currentSpeech);
   }
   
   
+  
+  
+  /*
+  * Handles Updating view when all evals have been reviewed or "graded"
+  */
+  $scope.isGradingDone = function() {
+    //if we're done inputting all evaluations...
+    if($scope.evalCounter >  $scope.numOfEvaluations) 
+      
+      return true;
+
+  }
+  
+  
+  
+  
+  
   /* 
-  * Handle active state
+  * Handle active state of input buttons
   **/
   $scope.isActive = function(index) {
     
