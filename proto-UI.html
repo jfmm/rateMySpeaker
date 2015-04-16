@@ -93,8 +93,9 @@
         </tbody>
       </thead>
     </table>
-      <button ng-show="isGradingDone()" class="get-results-btn">Ranking Results</button>
-<!--
+      <button ng-click="rankSpeakers(ratingData)" ng-show="isGradingDone()" class="get-results-btn">Ranking Results</button>
+      
+  <!--
    <div class="debug" style="text-align:left;">
       <pre ng-bind="ratingData | json">
       </pre>

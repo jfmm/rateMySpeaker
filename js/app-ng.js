@@ -111,4 +111,47 @@ angular.module('rateMySpeaker', [])
     
   }
   
+  
+  
+  
+  /*
+  * Sorting method. Takes the ratting data JSON object and creates a new one ranked 
+  * from high to low.
+  * TODO: ALgorithm is buggy
+  */
+  
+  $scope.rankedSpeakers = [];
+  $scope.rankSpeakers = function(ratingResults) {
+    
+    
+    var maxScore = 0;
+    
+    //iterate over object
+    for(var i = 0; i < ratingResults.length; i++) {
+    
+      var currentAvg = ratingResults[i].average_score,
+          currentSpeaker = ratingResults[i].speaker_name;
+      
+      $scope.rankedSpeakers.push({"name": currentSpeaker, "avg": currentAvg});
+      
+      if(currentAvg > maxScore) {
+
+        
+        var max = $scope.rankedSpeakers.pop(); // pop last element
+        
+        $scope.rankedSpeakers.unshift(max); // make it first, since its bigger
+        
+        maxScore = currentAvg; //update maxScore
+      
+      } 
+      
+    }
+    
+    console.log($scope.rankedSpeakers);
+    
+    return true;
+  
+  }
+  
+  
 }); // end of module
