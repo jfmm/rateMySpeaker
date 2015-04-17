@@ -96,9 +96,9 @@
       <button ng-click="rankSpeakers(ratingData)" ng-show="isGradingDone()" class="get-results-btn">Ranking Results</button>
       
       <section>
-        <ul ng-repeat="speaker in rankedSpeakers">
-          <li>{{speaker.name}} got {{speaker.avg}}</li>
-        </ul>
+        <ol>
+          <li ng-repeat="speaker in rankedSpeakers">{{speaker.name}} got {{speaker.avg}}</li>
+        </ol>
       </section>
   <!--
    <div class="debug" style="text-align:left;">

@@ -121,9 +121,10 @@ angular.module('rateMySpeaker', [])
   */
   
   $scope.rankedSpeakers = [];
+  
   $scope.rankSpeakers = function(ratingResults) {
     
-    
+    $scope.rankedSpeakers.length = 0; //reset array
     var maxScore = 0;
     
     //iterate over object
@@ -136,7 +137,6 @@ angular.module('rateMySpeaker', [])
       
       if(currentAvg > maxScore) {
 
-        
         var max = $scope.rankedSpeakers.pop(); // pop last element
         
         $scope.rankedSpeakers.unshift(max); // make it first, since its bigger
