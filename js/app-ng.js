@@ -1,6 +1,8 @@
 angular.module('rateMySpeaker', [])
   .controller('rate', function ($scope) {
 
+  "use strict";
+  
   $scope.numOfEvaluations = 0;
   $scope.numOfSpeeches = 0;
 
