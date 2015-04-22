@@ -90,7 +90,7 @@
       
       <section>
         <ol>
-          <li ng-repeat="speaker in rankedSpeakers">{{speaker.name}} got {{speaker.avg}}</li>
+          <li ng-repeat="speaker in rankedSpeakers">{{speaker.name}} got {{speaker.avg | number: 2}}</li>
         </ol>
       </section>
   <!--
