@@ -106,16 +106,38 @@ angular.module('rateMySpeaker', [])
   
   
   
+  /*
+  * Add rating to total score
+  */
+  $scope.add = function(index, event) {
+    
+    // when this function is called have it index the latest added value
+    var thisSpeech = $scope.ratingData[index];
+    var value = parseInt(event.target.value);
+    
+    //aggregate value to total score
+    thisSpeech.total_score += value;
+    
+    // push value to populate scores array
+    thisSpeech.scores.push(value);
+  
+  };
+  
   
    /* 
   * undo last grading
   **/
   $scope.undo = function(index) {
   
-    // when this function is called have it index the latest added value
-    var thisSpeech = $scope.ratingData[index];
     
-    thisSpeech.total_score -= thisSpeech.scores[thisSpeech.scores.length -1];
+    var thisSpeech = $scope.ratingData[index];
+    var lastRatingIndex = thisSpeech.scores.length -1;
+    
+    //subtract the last value that was added from the total score
+    thisSpeech.total_score -= thisSpeech.scores[lastRatingIndex];
+    
+    //delete from array
+    thisSpeech.scores.splice(lastRatingIndex, 1);
   
   };
   
