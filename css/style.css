@@ -20,6 +20,7 @@ html {
   box-shadow:  0 2px 5px rgba(0, 0, 0, 0.26);
   position: fixed;
   top: 0;
+  z-index: 100;
 }
 
 
@@ -189,6 +190,14 @@ td button[disabled] {
   color: #d3d3d3;
   cursor: not-allowed;
   border-color: #d3d3d3;
+}
+
+.delete-btn {
+  color: #F44336;
+  font-weight: bold;
+  border-color: #F44336;
+  -webkit-transform: rotate(47deg);
+          transform: rotate(47deg);
 }
 
 .avg-output {

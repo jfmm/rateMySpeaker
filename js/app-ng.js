@@ -88,6 +88,7 @@ angular.module('rateMySpeaker', [])
 
       $scope.ratingData.push({
         "speaker_name": "New Speaker",
+        "scores": [],
         "total_score" : 0,
         "average_score" : 0
       });
@@ -102,6 +103,25 @@ angular.module('rateMySpeaker', [])
     --$scope.numOfSpeeches;  //decrease speech count in UI
     var lastElemet = $scope.ratingData.pop();
   }
+  
+  
+  
+  
+   /* 
+  * undo last grading
+  **/
+  $scope.undo = function(index) {
+  
+    // when this function is called have it index the latest added value
+    var thisSpeech = $scope.ratingData[index];
+    
+    thisSpeech.total_score -= thisSpeech.scores[thisSpeech.scores.length -1];
+  
+  };
+  
+  
+  
+  
   
    
   /* 

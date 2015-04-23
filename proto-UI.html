@@ -37,7 +37,7 @@
         <tr>
           <td>Speech Number</td>
           <td>Speaker Name</td>
-          <td colspan="8">Rating</td>
+          <td colspan="9">Rating</td>
           <td>Average</td>
         </tr>
         <tbody ng-repeat="speech in ratingData">
@@ -49,35 +49,38 @@
             
             <!-- rating buttons -->
             <td>
-              <button ng-click="speech.total_score = speech.total_score + 0; updateCounter()" ng-disabled="!isActive($index)">0</button>
+              <button ng-click="speech.total_score = speech.total_score + 0; updateCounter(); speech.scores.push(0)" ng-disabled="!isActive($index)">0</button>
             </td>
             
             <td>
-              <button ng-click="speech.total_score = speech.total_score + 1; updateCounter()" ng-disabled="!isActive($index)">1</button>
+              <button ng-click="speech.total_score = speech.total_score + 1; updateCounter(); speech.scores.push(1)" ng-disabled="!isActive($index)">1</button>
             </td>
             
             <td>
-              <button ng-click="speech.total_score = speech.total_score + 2; updateCounter()" ng-disabled="!isActive($index)">2</button>
+              <button ng-click="speech.total_score = speech.total_score + 2; updateCounter(); speech.scores.push(2)" ng-disabled="!isActive($index)">2</button>
             </td>
             
             <td>
-              <button ng-click="speech.total_score = speech.total_score + 3; updateCounter()" ng-disabled="!isActive($index)">3</button>
+              <button ng-click="speech.total_score = speech.total_score + 3; updateCounter(); speech.scores.push(3)" ng-disabled="!isActive($index)">3</button>
             </td>
             
             <td>
-              <button ng-click="speech.total_score = speech.total_score + 4; updateCounter()" ng-disabled="!isActive($index)">4</button>
+              <button ng-click="speech.total_score = speech.total_score + 4; updateCounter(); speech.scores.push(4)" ng-disabled="!isActive($index)">4</button>
             </td>
             
             <td>
-              <button ng-click="speech.total_score = speech.total_score + 5; updateCounter()" ng-disabled="!isActive($index)">5</button>
+              <button ng-click="speech.total_score = speech.total_score + 5; updateCounter(); speech.scores.push(5)" ng-disabled="!isActive($index)">5</button>
             </td>
             
             <td>
-              <button ng-click="speech.total_score = speech.total_score + 6; updateCounter()" ng-disabled="!isActive($index)">6</button>
+              <button ng-click="speech.total_score = speech.total_score + 6; updateCounter(); speech.scores.push(6)" ng-disabled="!isActive($index)">6</button>
             </td>
             
             <td>
-              <button ng-click="speech.total_score = speech.total_score + 7; updateCounter()" ng-disabled="!isActive($index)">7</button>
+              <button ng-click="speech.total_score = speech.total_score + 7; updateCounter(); speech.scores.push(7)" ng-disabled="!isActive($index)">7</button>
+            </td>
+            <td>
+              <button class="delete-btn" ng-click="undo($index)">+</button>
             </td>
             <td class="avg-output">
               {{speech.average_score = speech.total_score / numOfEvaluations | number: 2}}
@@ -93,12 +96,12 @@
           <li ng-repeat="speaker in rankedSpeakers">{{speaker.name}} got {{speaker.avg | number: 2}}</li>
         </ol>
       </section>
-  <!--
+  
    <div class="debug" style="text-align:left;">
       <pre ng-bind="ratingData | json">
       </pre>
     </div>
--->
+
   </section>
 <footer>
 </footer>
