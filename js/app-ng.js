@@ -19,15 +19,15 @@ angular.module('rateMySpeaker', [])
  
 
     // if we finish inputing an evaluation....
-    if(currentSpeech >= $scope.numOfSpeeches) {
+    if(currentSpeech >= $scope.numOfSpeeches) { 
       
       $scope.evalCounter++; // increase evalutaion #
       currentSpeech = 0; //reset speech #
-    } 
-    
+   
+    }
   
      ++currentSpeech; 
-    
+     
   }
   
   
@@ -39,7 +39,6 @@ angular.module('rateMySpeaker', [])
   $scope.isGradingDone = function() {
     //if we're done inputting all evaluations...
     if($scope.evalCounter >  $scope.numOfEvaluations) 
-      
       return true;
 
   }
@@ -182,33 +181,34 @@ angular.module('rateMySpeaker', [])
   $scope.rankSpeakers = function(ratingResults) {
     
     $scope.rankedSpeakers.length = 0; //reset array
-    var maxScore = 0;
+ 
     
-    //iterate over object
+    //iterate over object and populate new ranked array
     for(var i = 0; i < ratingResults.length; i++) {
     
       var currentAvg = ratingResults[i].average_score,
           currentSpeaker = ratingResults[i].speaker_name;
       
       $scope.rankedSpeakers.push({"name": currentSpeaker, "avg": currentAvg});
-      
-      if(currentAvg > maxScore) {
+  
 
-        var max = $scope.rankedSpeakers.pop(); // pop last element
-        
-        $scope.rankedSpeakers.unshift(max); // make it first, since its bigger
-        
-        maxScore = currentAvg; //update maxScore
-      
-      } 
-      
-    }
+    } //end for loop
     
-    console.log($scope.rankedSpeakers);
+    
+    
+    //sort speakers in ascending order by average value
+    $scope.rankedSpeakers.sort(function(a,b){
+      return b.avg - a.avg;
+    });
+        
     
     return true;
   
+  
   }
   
-  
+ 
+
+
+
 }); // end of module
