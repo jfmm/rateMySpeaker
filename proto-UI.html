@@ -49,7 +49,7 @@
             
             <!-- rating buttons -->
             <td>
-              <button value="0" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">0</button>
+              <button ng-click="noAnswer($index); updateCounter()" ng-disabled="!isActive($index)">-</button>
             </td>
             
             <td>
@@ -80,10 +80,10 @@
               <button value="7" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">7</button>
             </td>
             <td>
-              <button class="delete-btn" ng-click="undo($index)">+</button>
+              <button class="delete-btn" ng-click="undo($index)" ng-disabled="!isActive($index)">+</button>
             </td>
             <td class="avg-output">
-              {{speech.average_score = speech.total_score / numOfEvaluations | number: 2}}
+              {{speech.average_score = speech.total_score / speech.num_of_grades | number: 2}}
             </td> 
           </tr>
         </tbody>

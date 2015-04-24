@@ -88,6 +88,7 @@ angular.module('rateMySpeaker', [])
 
       $scope.ratingData.push({
         "speaker_name": "New Speaker",
+        "num_of_grades": $scope.numOfEvaluations,
         "scores": [],
         "total_score" : 0,
         "average_score" : 0
@@ -142,6 +143,18 @@ angular.module('rateMySpeaker', [])
   };
   
   
+  
+  
+   /* 
+  * No answer button
+  **/
+  $scope.noAnswer = function(index) {
+    
+    var thisSpeech = $scope.ratingData[index];
+    
+    thisSpeech.num_of_grades -= 1; // subtract 1 from the number of responses
+    
+  }
   
   
   
