@@ -205,7 +205,7 @@ angular.module('rateMySpeaker', [])
   
     $scope.showAnalytics = function () { 
       
-      if($scope.isGradingDone)
+      if($scope.isGradingDone() && $scope.rankedSpeakers.length != 0)
         return true;
     
     };
