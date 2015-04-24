@@ -221,3 +221,18 @@ td button[disabled] {
         box-shadow:  0px 3px 4px 0px #B0B0B0;
 
 }
+
+
+/*------------------------------------------
+* Grid Layout Styles
+-------------------------------------------*/
+.row {
+  display: block;
+  width: 100%;
+}
+
+.col {
+  float: left;
+  width: 50%;
+}
+

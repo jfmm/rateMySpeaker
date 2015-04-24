@@ -38,9 +38,8 @@ angular.module('rateMySpeaker', [])
   */
   $scope.isGradingDone = function() {
     //if we're done inputting all evaluations...
-    if($scope.evalCounter >  $scope.numOfEvaluations) 
+    if($scope.evalCounter >  $scope.numOfEvaluations && $scope.numOfEvaluations !=0) 
       return true;
-
   }
   
   
@@ -173,7 +172,7 @@ angular.module('rateMySpeaker', [])
   /*
   * Sorting method. Takes the ratting data JSON object and creates a new one ranked 
   * from high to low.
-  * TODO: ALgorithm is buggy
+  *
   */
   
   $scope.rankedSpeakers = [];
@@ -196,16 +195,20 @@ angular.module('rateMySpeaker', [])
     
     
     
-    //sort speakers in ascending order by average value
+    //sort speakers in descending order by average value
     $scope.rankedSpeakers.sort(function(a,b){
       return b.avg - a.avg;
     });
-        
-    
-    return true;
-  
-  
+
   }
+  
+  
+    $scope.showAnalytics = function () { 
+      
+      if($scope.isGradingDone)
+        return true;
+    
+    };
   
  
 

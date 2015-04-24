@@ -89,12 +89,37 @@
         </tbody>
       </thead>
     </table>
-      <button ng-click="rankSpeakers(ratingData)" ng-show="isGradingDone()" class="get-results-btn">Ranking Results</button>
+      <button ng-click="rankSpeakers(ratingData)" ng-show="isGradingDone()" class="get-results-btn">See Report</button>
       
-      <section>
-        <ol>
-          <li ng-repeat="speaker in rankedSpeakers">{{speaker.name}} got {{speaker.avg | number: 2}}</li>
-        </ol>
+      
+      <!-- section analytics report -->
+      <section class="cf" id="analytics-report" ng-if="showAnalytics()">
+        
+        <div class="row">
+          <div class="col">
+          <ol>
+            <li ng-repeat="speaker in rankedSpeakers">
+              {{speaker.name}} got {{speaker.avg | number: 2}}
+            </li>
+          </ol>
+          </div>
+          <div class="col">
+            <h2 class="app-title">Highest Rated Speaker</h2>
+            <h3>{{rankedSpeakers[0].name}} - {{rankedSpeakers[0].avg | number:2}}</h3>
+          </div> 
+        </div>
+        
+        <div class="row">
+          <div class="col">
+            <h2 class="app-title">Median</h2>
+            <h3>5.67</h3>
+          </div>
+          
+          <div class="col">
+            <h2 class="app-title">Average</h2>
+            <h3>6.67</h3>
+          </div>
+        </div>
       </section>
   
 <!--
