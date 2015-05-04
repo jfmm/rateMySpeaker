@@ -205,7 +205,7 @@ angular.module('rateMySpeaker', [])
   /* Descending Speaker ranking
   ============================*/
   function rankSpeakers() {
-    console.log("ranked speakers executed!");
+    
     $scope.rankedSpeakers.length = 0; //reset array
  
     
@@ -226,8 +226,6 @@ angular.module('rateMySpeaker', [])
     $scope.rankedSpeakers.sort(function(a,b){
       return b.avg - a.avg;
     });
-
-   console.log("ranked speakers FULLY executed!");
   
   }
   
@@ -237,15 +235,14 @@ angular.module('rateMySpeaker', [])
   ============================*/
 
   function getMedian () {
-    
-    console.log("getmedian executed!");
-    
-    
+     
     
     //sort ranked speakers array in ascending order
     var ascendingArray = ratingResults.sort(function(a,b){
-      return a.avg - b.avg;
+      return a.average_score - b.average_score;
     });
+    
+    console.log(ascendingArray);
     
     var middleValue =  ascendingArray.length / 2;
     
@@ -262,7 +259,7 @@ angular.module('rateMySpeaker', [])
     // if array has odd number of elements...
     else {
     
-      $scope.median = ascendingArray[Math.ceil(middleValue)].average_score;
+      $scope.median = (ascendingArray[Math.ceil(middleValue) - 1].average_score).toFixed(2);
   
     }
     
@@ -284,7 +281,7 @@ angular.module('rateMySpeaker', [])
 
     } //end for loop
     
-    $scope.average = currentScore / ratingResults.length;
+    $scope.average = (currentScore / ratingResults.length).toFixed(2);
     
   }
     
