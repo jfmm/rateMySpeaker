@@ -168,6 +168,13 @@ angular.module('rateMySpeaker', [])
   
   
   
+  $scope.getAnalytics = function (data) {
+  
+    
+  
+  }; // analytics method close 
+  
+  
   
   /*
   * Sorting method. Takes the ratting data JSON object and creates a new one ranked 
@@ -205,13 +212,55 @@ angular.module('rateMySpeaker', [])
   
     $scope.showAnalytics = function () { 
       
+      // if the grading is done and if the ranked speakers have been populated,
+      // we show the analytics report section
       if($scope.isGradingDone() && $scope.rankedSpeakers.length != 0)
         return true;
     
     };
   
+  
+  
+  
+  /* Median Calculation
+  ============================*/
  
-
-
-
+  $scope.median = 999;
+  
+  $scope.getMedian = function(array) {
+    
+    var middleValue;
+    
+    //sort ranked speakers array in ascending order
+    var ascendingArray = array.sort(function(a,b){
+      return a.avg - b.avg;
+    });
+    
+    
+    
+    // if array has even number of elements...
+    if(ascendingArray.length % 2 === 0) {
+          
+      middleValue = ascendingArray.length / 2;
+      
+      var middleElement = ascendingArray[middleValue],
+          adjacentElement = ascendingArray[middleValue + 1];
+          
+      $scope.median = (middleElement + adjacentElement) / 2;
+    
+    } 
+    // if array has odd number of elements...
+    else {
+    
+      $scope.median = ascendingArray[Math.ceil(middleValue)];
+    
+    }
+    
+    
+    return $scope.median;
+  
+  }
+  
+  //getMedian($scope.rankedSpeakers);
+  
 }); // end of module
