@@ -276,12 +276,24 @@ angular.module('rateMySpeaker', [])
   =========================================*/
   function getAverage() {
     
+    var currentScore = 0;
+    
+    for(var i = 0; i < ratingResults.length; i++) {
+    
+       currentScore += ratingResults[i].average_score;
+
+    } //end for loop
+    
+    $scope.average = currentScore / ratingResults.length;
+    
   }
     
     
   // execute methods...  
   rankSpeakers();
+  getAverage();
   getMedian();
+  
     
   
   }; // analytics method close 
