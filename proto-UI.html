@@ -89,7 +89,7 @@
         </tbody>
       </thead>
     </table>
-      <button ng-click="rankSpeakers(ratingData); getMedian(ratingData)" ng-show="isGradingDone()" class="get-results-btn">See Report</button>
+      <button ng-click="getAnalytics(ratingData)" ng-show="isGradingDone()" class="get-results-btn">See Report</button>
       
       
       <!-- section analytics report -->
@@ -117,7 +117,7 @@
           
           <div class="col">
             <h2 class="app-title">Average</h2>
-            <h3>6.67</h3>
+            <h3>{{ average }}</h3>
           </div>
         </div>
       </section>

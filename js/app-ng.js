@@ -3,6 +3,7 @@ angular.module('rateMySpeaker', [])
 
   "use strict";
   
+
   $scope.numOfEvaluations = 0;
   $scope.numOfSpeeches = 0;
 
@@ -168,24 +169,43 @@ angular.module('rateMySpeaker', [])
   
   
   
-  $scope.getAnalytics = function (data) {
+  $scope.showAnalytics = function () { 
+
+    // if the grading is done and if the ranked speakers have been populated,
+    // we show the analytics report section
+    if($scope.isGradingDone() && $scope.rankedSpeakers.length != 0)
+      return true;
+
+  };
   
-    
   
-  }; // analytics method close 
+  
   
   
   
   /*
-  * Sorting method. Takes the ratting data JSON object and creates a new one ranked 
-  * from high to low.
+  * Analytics Method calculates the following metrics:
+  *  
+    1. Rank from high to low
+    2. Highest Rated Speaker
+    3. Lowest Rated Speaker
+    4. Average
+    5. Median
   *
   */
   
   $scope.rankedSpeakers = [];
+  $scope.median;
+  $scope.average;
   
-  $scope.rankSpeakers = function(ratingResults) {
-    
+  $scope.getAnalytics = function (ratingResults) {
+  
+   
+
+  /* Descending Speaker ranking
+  ============================*/
+  function rankSpeakers() {
+    console.log("ranked speakers executed!");
     $scope.rankedSpeakers.length = 0; //reset array
  
     
@@ -207,60 +227,67 @@ angular.module('rateMySpeaker', [])
       return b.avg - a.avg;
     });
 
+   console.log("ranked speakers FULLY executed!");
+  
   }
   
-  
-    $scope.showAnalytics = function () { 
-      
-      // if the grading is done and if the ranked speakers have been populated,
-      // we show the analytics report section
-      if($scope.isGradingDone() && $scope.rankedSpeakers.length != 0)
-        return true;
-    
-    };
-  
-  
-  
+
   
   /* Median Calculation
   ============================*/
- 
-  $scope.median = 999;
-  
-  $scope.getMedian = function(array) {
+
+  function getMedian () {
     
-    var middleValue;
+    console.log("getmedian executed!");
+    
+    
     
     //sort ranked speakers array in ascending order
-    var ascendingArray = array.sort(function(a,b){
+    var ascendingArray = ratingResults.sort(function(a,b){
       return a.avg - b.avg;
     });
     
-    
+    var middleValue =  ascendingArray.length / 2;
     
     // if array has even number of elements...
     if(ascendingArray.length % 2 === 0) {
           
-      middleValue = ascendingArray.length / 2;
-      
-      var middleElement = ascendingArray[middleValue],
+
+      var middleElement = ascendingArray[middleValue - 1],
           adjacentElement = ascendingArray[middleValue + 1];
           
-      $scope.median = (middleElement + adjacentElement) / 2;
+      $scope.median = ((middleElement.average_score + adjacentElement.average_score) / 2).toFixed(2);
     
     } 
     // if array has odd number of elements...
     else {
     
-      $scope.median = ascendingArray[Math.ceil(middleValue)];
-    
+      $scope.median = ascendingArray[Math.ceil(middleValue)].average_score;
+  
     }
     
+
+  } //end of get median
+  
+
+  
     
-    return $scope.median;
-  
+   /* Calculate the average, average score
+  =========================================*/
+  function getAverage() {
+    
   }
+    
+    
+  // execute methods...  
+  rankSpeakers();
+  getMedian();
+    
   
-  //getMedian($scope.rankedSpeakers);
+  }; // analytics method close 
+  
+  
+  
+  
   
 }); // end of module
