@@ -33,19 +33,19 @@ angular.module('rateMySpeaker', [])
     
     for(var i = 0; i < storedData.length; i++) {
 			
-			var arrayItem = {
-				"speaker_name" : storedData[i].speaker_name,
-				"num_of_grades" : storedData[i].num_of_grades,
-				"scores": storedData[i].scores,
-        "total_score": storedData[i].total_score,
-        "average_score" : storedData[i].average_score 
-			};
+	var arrayItem = {
+		"speaker_name" : storedData[i].speaker_name,
+		"num_of_grades" : storedData[i].num_of_grades,
+		"scores": storedData[i].scores,
+		"total_score": storedData[i].total_score,
+		"average_score" : storedData[i].average_score 
+	};
 		
 		
-			// push saved data into speech data array
-			$scope.ratingData.push(arrayItem);
+	// push saved data into speech data array
+	$scope.ratingData.push(arrayItem);
 			
-		}
+	}
   
   
   }//end of if block
