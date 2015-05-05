@@ -149,7 +149,13 @@ angular.module('rateMySpeaker', [])
   
   $scope.undo = function() {
     
-    --currentSpeech;
+    if(currentSpeech > 1) { 
+      --currentSpeech;
+    } else {
+      currentSpeech = $scope.ratingData.length;
+    }
+  
+    console.log(currentSpeech);
   
   };
   
