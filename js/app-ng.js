@@ -3,18 +3,63 @@ angular.module('rateMySpeaker', [])
 
   "use strict";
   
+  
+  // if session storage is empty...
+  if(sessionStorage.length == 0) {
+    
+    //reset counter variables
+    $scope.numOfEvaluations = 0;
+    $scope.numOfSpeeches = 0;
+    $scope.evalCounter = 1;
+     var currentSpeech = 1;
+    
+    //reset JSON object
+    $scope.ratingData = []; //will containt JSON Object
 
-  $scope.numOfEvaluations = 0;
-  $scope.numOfSpeeches = 0;
+  }
+  
+  else {
+  
+    $scope.numOfEvaluations = parseInt(sessionStorage.numOfEvaluations);
+    $scope.numOfSpeeches = parseInt(sessionStorage.numOfSpeeches);
+    $scope.evalCounter = parseInt(sessionStorage.currentEvaluation);
+    
+    var currentSpeech = parseInt(sessionStorage.currentSpeech);
+    
+    
+    $scope.ratingData = [];
+    
+    var storedData = JSON.parse(sessionStorage.speechRatings);
+    
+    for(var i = 0; i < storedData.length; i++) {
+			
+			var arrayItem = {
+				"speaker_name" : storedData[i].speaker_name,
+				"num_of_grades" : storedData[i].num_of_grades,
+				"scores": storedData[i].scores,
+        "total_score": storedData[i].total_score,
+        "average_score" : storedData[i].average_score 
+			};
+		
+		
+			// push saved data into speech data array
+			$scope.ratingData.push(arrayItem);
+			
+		}
+  
+  
+  }//end of if block
 
-  $scope.evalCounter = 1;
+ 
   
  
+  
  
    /* 
   * Loop over speeches and evaluations.
   **/
-  var currentSpeech = 1;
+ 
+
   
   $scope.updateCounter = function() {
  
@@ -79,7 +124,7 @@ angular.module('rateMySpeaker', [])
   /* 
   * add speeches
   **/
-  $scope.ratingData = []; //will containt JSON Object
+ 
   
   $scope.addSpeech = function() {
     
@@ -332,7 +377,17 @@ angular.module('rateMySpeaker', [])
     window.sessionStorage.setItem("speechRatings", JSON.stringify(data));
     
     //store number of evaluations
-     window.sessionStorage.setItem("numOfEvaluations", $scope.numOfEvaluations);
+    window.sessionStorage.setItem("numOfEvaluations", $scope.numOfEvaluations);
+    
+    //store number of speeches
+     window.sessionStorage.setItem("numOfSpeeches", $scope.numOfSpeeches);
+    
+    //store current speech #
+     window.sessionStorage.setItem("currentSpeech", currentSpeech);
+    
+    //store current evaluation #
+     window.sessionStorage.setItem("currentEvaluation", $scope.evalCounter);
+    
     
     //log success message, and time stamp it.
     var now = new Date(),
