@@ -313,5 +313,36 @@ angular.module('rateMySpeaker', [])
   
   
   
+    /*
+  * Save Button
+  * store current data into session storage
+  */
+  
+  $scope.saveStatus = "You have not saved your progress...";
+  
+  $scope.save = function(data) {
+  
+    //store speech data
+    window.sessionStorage.setItem("speechRatings", JSON.stringify(data));
+    
+    //store number of evaluations
+     window.sessionStorage.setItem("numOfEvaluations", $scope.numOfEvaluations);
+    
+    //log success message, and time stamp it.
+    var now = new Date(),
+        hour = now.getHours(),
+        minutes = now.getMinutes();
+    
+    // AM or PM?
+    if(hour < 12) 
+      var meridiem = "AM";
+    else
+      var meridiem = "PM";
+        
+    $scope.saveStatus = "You last saved your progress at " + hour + ":" + minutes + " " + meridiem;
+  
+  };
+  
+  
   
 }); // end of module

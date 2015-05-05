@@ -95,6 +95,12 @@ input[type="text"] {
   color: #FFF;
   font-size: 1.8em;
   outline: none;
+  transition: 0.1s all ease;
+}
+
+.action-btn:active {
+  height: 45px;
+  width: 45px;
 }
 
 .action-btn img {

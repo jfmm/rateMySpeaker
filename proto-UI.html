@@ -34,7 +34,7 @@
         <img src="icons/ic_undo_24px.svg">
       </button>
       
-      <button class="action-btn" ng-click="save()">
+      <button class="action-btn" ng-click="save(ratingData)">
         <img src="icons/ic_save_24px.svg">
       </button>
     </div>
@@ -46,7 +46,8 @@
     
     <div>You're currently on evaluation <span class="avg-output">{{evalCounter}}</span> out of {{numOfEvaluations}}<div>
      
-  
+    <div class="save-status">{{ saveStatus }}</div>
+      
     <table ng-show="showTableUI()" id="main-table">
       <thead>
         <tr>
