@@ -125,9 +125,9 @@ angular.module('rateMySpeaker', [])
   
   
    /* 
-  * undo last grading
+  * subtract last grading
   **/
-  $scope.undo = function(index) {
+  $scope.subtract = function(index) {
   
     
     var thisSpeech = $scope.ratingData[index];
@@ -138,6 +138,18 @@ angular.module('rateMySpeaker', [])
     
     //delete from array
     thisSpeech.scores.splice(lastRatingIndex, 1);
+  
+  };
+  
+  
+  
+  /*
+  * undo button
+  */
+  
+  $scope.undo = function() {
+    
+    --currentSpeech;
   
   };
   
@@ -168,7 +180,10 @@ angular.module('rateMySpeaker', [])
   }
   
   
-  
+   
+  /* 
+  * Handles the visibility of analytics view
+  **/
   $scope.showAnalytics = function () { 
 
     // if the grading is done and if the ranked speakers have been populated,

@@ -21,8 +21,11 @@
       <input id="numOfEvals" type="number" min="1" ng-model="numOfEvaluations">
     </div>
     
-    <div class="speechControls"><button class="action-btn" ng-click="addSpeech()">+</button><button class="action-btn" ng-click="removeSpeech()">-</button>
-</div>
+    <div class="speechControls">
+      <button class="action-btn" ng-click="addSpeech()">+</button>
+      <button class="action-btn" ng-click="removeSpeech()">-</button>
+      <button class="action-btn" ng-click="undo()">&and;</button>
+    </div>
   </div>
   <section id="main-container" >
       <h1 class="app-title">Seminar Speaker Rating</h1>
@@ -80,7 +83,7 @@
               <button value="7" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">7</button>
             </td>
             <td>
-              <button class="delete-btn" ng-click="undo($index)" ng-disabled="!isActive($index)">+</button>
+              <button class="delete-btn" ng-click="subtract($index)" ng-disabled="!isActive($index)">+</button>
             </td>
             <td class="avg-output">
               {{speech.average_score = speech.total_score / speech.num_of_grades | number: 2}}
