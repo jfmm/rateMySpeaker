@@ -97,6 +97,10 @@ input[type="text"] {
   outline: none;
 }
 
+.action-btn img {
+  margin-top: 10px;
+}
+
 /* Table UI styles
 ===========================*/
 table {
