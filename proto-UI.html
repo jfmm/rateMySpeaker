@@ -30,11 +30,11 @@
         <img src="icons/ic_remove_24px.svg">
       </button>
       
-      <button class="action-btn" ng-click="undo()">
+      <button class="action-btn" ng-click="undo()" ng-if="ratingData.length != 0">
         <img src="icons/ic_undo_24px.svg">
       </button>
       
-      <button class="action-btn" ng-click="save(ratingData)">
+      <button class="action-btn" ng-click="save(ratingData)" ng-if="ratingData.length != 0">
         <img src="icons/ic_save_24px.svg">
       </button>
     </div>
