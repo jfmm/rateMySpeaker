@@ -1,8 +1,7 @@
 angular.module('rateMySpeaker', [])
   .controller('rate', function ($scope) {
 
-  "use strict";
-  
+
   
   // if session storage is empty...
   if(sessionStorage.length == 0) {
