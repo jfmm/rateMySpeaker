@@ -43,7 +43,8 @@ input#numOfEvals {
   border-right: none;
   border-bottom: 1px solid #6172DB;
   font-size: 1.3em;
-  color: #FFF;  
+  color: #FFF; 
+  box-shadow: none; /* removes red outline on firefox */
 }
 
 

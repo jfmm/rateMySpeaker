@@ -51,9 +51,7 @@ angular.module('rateMySpeaker', [])
   
 
   
-  // add "saved" class onLoad to all name inputs and
-  // remove the placeholder class
-  addEventListener('load', addSavedClass, false);
+ 
 
    function addSavedClass() {
 
@@ -66,6 +64,10 @@ angular.module('rateMySpeaker', [])
      }
 
   }  
+    
+  // add "saved" class onLoad to all name inputs and
+  // remove the placeholder class
+  addEventListener('load', addSavedClass, false);
   
 
   }//end of if block
