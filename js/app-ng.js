@@ -20,34 +20,55 @@ angular.module('rateMySpeaker', [])
   
   else {
   
+    //use stored values...
     $scope.numOfEvaluations = parseInt(sessionStorage.numOfEvaluations);
     $scope.numOfSpeeches = parseInt(sessionStorage.numOfSpeeches);
     $scope.evalCounter = parseInt(sessionStorage.currentEvaluation);
     
     var currentSpeech = parseInt(sessionStorage.currentSpeech);
     
-    
+    // initialize blank array for JSON
     $scope.ratingData = [];
     
+    
+    //parse stored JSON string and populate new array
     var storedData = JSON.parse(sessionStorage.speechRatings);
     
     for(var i = 0; i < storedData.length; i++) {
 			
-	var arrayItem = {
-		"speaker_name" : storedData[i].speaker_name,
-		"num_of_grades" : storedData[i].num_of_grades,
-		"scores": storedData[i].scores,
-		"total_score": storedData[i].total_score,
-		"average_score" : storedData[i].average_score 
-	};
-		
-		
-	// push saved data into speech data array
-	$scope.ratingData.push(arrayItem);
+      var arrayItem = {
+        "speaker_name" : storedData[i].speaker_name,
+        "num_of_grades" : storedData[i].num_of_grades,
+        "scores": storedData[i].scores,
+        "total_score": storedData[i].total_score,
+        "average_score" : storedData[i].average_score 
+      };
+
+
+      // push saved data into speech data array
+      $scope.ratingData.push(arrayItem);
 			
-	}
+	 }
   
+
   
+  // add "saved" class onLoad to all name inputs and
+  // remove the placeholder class
+  addEventListener('load', addSavedClass, false);
+
+   function addSavedClass() {
+
+     var names = document.querySelectorAll("input[type=text]");
+
+     for (var i = 0; i < names.length; i++) {
+       names[i].classList.add("saved");
+       names[i].classList.remove("placeholder");
+
+     }
+
+  }  
+  
+
   }//end of if block
 
  
@@ -58,9 +79,6 @@ angular.module('rateMySpeaker', [])
    /* 
   * Loop over speeches and evaluations.
   **/
- 
-
-  
   $scope.updateCounter = function() {
  
 
@@ -200,7 +218,7 @@ angular.module('rateMySpeaker', [])
       currentSpeech = $scope.ratingData.length;
     }
   
-    console.log(currentSpeech);
+   
   
   };
   
