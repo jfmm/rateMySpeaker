@@ -433,10 +433,20 @@ angular.module('rateMySpeaker', [])
   };
   
   
-//  $scope.hideModal = function() {
-//    var modal = document.getElementsByClassName("modal-wrap");
-//    modal.style.display = "none";
-//  }
   
+  
+  
+  
+  
+  $scope.modalStatus = 0; 
+  
+  $scope.hideModal = function() {
+  
+    $scope.modalStatus = 1;
+
+    
+  }
+  
+ 
   
 }); // end of module
