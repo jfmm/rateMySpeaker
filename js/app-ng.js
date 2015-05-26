@@ -6,11 +6,14 @@ angular.module('rateMySpeaker', [])
   // if session storage is empty...
   if(sessionStorage.length == 0) {
     
-    //reset counter variables
+    //initialize boilerplate variables...
     $scope.numOfEvaluations = 0;
     $scope.numOfSpeeches = 0;
     $scope.evalCounter = 1;
-     var currentSpeech = 1;
+    
+    $scope.saveStatus = "You have not saved your progress...";
+     
+    var currentSpeech = 1;
     
     //reset JSON object
     $scope.ratingData = []; //will containt JSON Object
@@ -23,6 +26,7 @@ angular.module('rateMySpeaker', [])
     $scope.numOfEvaluations = parseInt(sessionStorage.numOfEvaluations);
     $scope.numOfSpeeches = parseInt(sessionStorage.numOfSpeeches);
     $scope.evalCounter = parseInt(sessionStorage.currentEvaluation);
+    $scope.saveStatus = sessionStorage.lastSaved;
     
     var currentSpeech = parseInt(sessionStorage.currentSpeech);
     
@@ -51,8 +55,6 @@ angular.module('rateMySpeaker', [])
   
 
   
- 
-
    function addSavedClass() {
 
      var names = document.querySelectorAll("input[type=text]");
@@ -377,6 +379,7 @@ angular.module('rateMySpeaker', [])
   getMedian();
   
     
+  return true;
   
   }; // analytics method close 
   
@@ -388,7 +391,7 @@ angular.module('rateMySpeaker', [])
   * store current data into session storage
   */
   
-  $scope.saveStatus = "You have not saved your progress...";
+
   
   $scope.save = function(data) {
   
@@ -408,6 +411,8 @@ angular.module('rateMySpeaker', [])
      window.sessionStorage.setItem("currentEvaluation", $scope.evalCounter);
     
     
+    
+    
     //log success message, and time stamp it.
     var now = new Date(),
         hour = now.getHours(),
@@ -420,9 +425,18 @@ angular.module('rateMySpeaker', [])
       var meridiem = "PM";
         
     $scope.saveStatus = "You last saved your progress at " + hour + ":" + minutes + " " + meridiem;
+    
+    
+    //store save timestamp
+    window.sessionStorage.setItem("lastSaved", $scope.saveStatus);
   
   };
   
+  
+//  $scope.hideModal = function() {
+//    var modal = document.getElementsByClassName("modal-wrap");
+//    modal.style.display = "none";
+//  }
   
   
 }); // end of module
