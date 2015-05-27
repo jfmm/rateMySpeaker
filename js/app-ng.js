@@ -390,9 +390,6 @@ angular.module('rateMySpeaker', [])
   * Save Button
   * store current data into session storage
   */
-  
-
-  
   $scope.save = function(data) {
   
     //store speech data

@@ -234,12 +234,6 @@ td button[disabled] {
   border: none;
   border-radius: 2px;
   transition: 0.2s ease-in all;
-/*
-  -webkit-box-shadow:  0px 3px 4px 0px #B0B0B0;
-  -moz-box-shadow:  0px 3px 4px 0px #B0B0B0;
-        box-shadow:  0px 3px 4px 0px #B0B0B0;
-*/
-
 }
 
 
@@ -282,3 +276,9 @@ td button[disabled] {
   font-weight: 100;
   color: #FFF;
 }
+
+
+/*------------------------------------------
+* Analytics Report Styles
+-------------------------------------------*/
+
