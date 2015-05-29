@@ -438,7 +438,12 @@ angular.module('rateMySpeaker', [])
   $scope.modalStatus = false; 
   
   // hide modal after report button is clicked
-  $scope.hideModal = function() { $scope.modalStatus = true; }
+  $scope.hideModal = function() { 
+    
+    $scope.modalStatus = true; 
+
+  
+  };
   
  
   

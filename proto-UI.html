@@ -42,9 +42,9 @@
   <section id="main-container" >
       <h1 class="app-title">Seminar Speaker Rating</h1>
     
-    <span>Number of Speeches <span class="avg-output">{{ numOfSpeeches}}</span></span>
+    <span>Number of Speeches <span class="number-data">{{ numOfSpeeches}}</span></span>
     
-    <div>You're currently on evaluation <span class="avg-output">{{evalCounter}}</span> out of {{numOfEvaluations}}<div>
+    <div>You're currently on evaluation <span class="number-data">{{evalCounter}}</span> out of {{numOfEvaluations}}<div>
      
     <div class="save-status">{{ saveStatus }}</div>
       
@@ -98,7 +98,7 @@
             <td>
               <button class="delete-btn" ng-click="subtract($index)" ng-disabled="!isActive($index)">+</button>
             </td>
-            <td class="avg-output">
+            <td class="number-data">
               {{speech.average_score = speech.total_score / speech.num_of_grades | number: 2}}
             </td> 
           </tr>
@@ -109,32 +109,38 @@
       <!-- section analytics report -->
       <section class="cf" id="analytics-report" ng-if="showAnalytics()">
         
-        <div class="row">
+        <div class="row cf">
           <div class="col">
-          <h2 class="app-title">Speaker Score Ranking</h2>
-          <ol>
-            <li ng-repeat="speaker in rankedSpeakers">
-              {{speaker.name}} got {{speaker.avg | number: 2}}
-            </li>
-          </ol>
-          </div>
-          <div class="col">
-            <h2 class="app-title">Highest Rated Speaker</h2>
-            <h3>{{rankedSpeakers[0].name}} - {{rankedSpeakers[0].avg | number:2}}</h3>
-          </div> 
-        </div>
-        
-        <div class="row">
-          <div class="col">
-            <h2 class="app-title">Median</h2>
-            <h3>{{ median }}</h3>
+            <div class="card">
+              <h2 class="card-title">Speaker Score Ranking</h2>
+              <ol>
+                <li ng-repeat="speaker in rankedSpeakers">
+                  {{speaker.name}} got a {{speaker.avg | number: 2}}
+                </li>
+              </ol>
+            </div>
           </div>
           
           <div class="col">
-            <h2 class="app-title">Average</h2>
-            <h3>{{ average }}</h3>
+            <div class="card">
+              <h2 class="card-title">Highest Rated Speaker</h2>
+              <h3 class="number-data">{{rankedSpeakers[0].name}} ( {{rankedSpeakers[0].avg | number:2}} )</h3>
+            </div>
+            
+             <div class="card">
+              <h2 class="card-title">Median</h2>
+              <h3 class="number-data">{{ median }}</h3>
+            </div>
+            
+            <div class="card">
+              <h2 class="card-title">Average</h2>
+              <h3 class="number-data">{{ average }}</h3>
+            </div>
+            
           </div>
         </div>
+        
+        
       </section>
     
     
