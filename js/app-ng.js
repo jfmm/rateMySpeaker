@@ -108,7 +108,7 @@ angular.module('rateMySpeaker', [])
     if($scope.evalCounter >  $scope.numOfEvaluations && $scope.numOfEvaluations !=0) { 
       
       window.scroll(0,0); // scroll to the top of the page
-      return true;
+      return true; // return true so that modal window shows up
     
     }
   }
