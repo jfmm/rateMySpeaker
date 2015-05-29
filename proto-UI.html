@@ -22,19 +22,19 @@
     </div>
     
     <div class="speechControls">
-      <button class="action-btn" ng-click="addSpeech()">
+      <button class="action-btn" ng-click="addSpeech()" ng-if="numOfEvaluations" ng-hide="reportIsShown">
         <img src="icons/ic_add_24px.svg">
       </button>
       
-      <button class="action-btn" ng-click="removeSpeech()">
+      <button class="action-btn" ng-click="removeSpeech()" ng-if="numOfEvaluations" ng-hide="reportIsShown">
         <img src="icons/ic_remove_24px.svg">
       </button>
       
-      <button class="action-btn" ng-click="undo()" ng-if="ratingData.length != 0">
+      <button class="action-btn" ng-click="undo()" ng-if="ratingData.length != 0" ng-hide="reportIsShown">
         <img src="icons/ic_undo_24px.svg">
       </button>
       
-      <button class="action-btn" ng-click="save(ratingData)" ng-if="ratingData.length != 0">
+      <button class="action-btn" ng-click="save(ratingData)" ng-if="ratingData.length != 0" ng-hide="reportIsShown">
         <img src="icons/ic_save_24px.svg">
       </button>
     </div>
@@ -42,14 +42,14 @@
   <section id="main-container" >
       <h1 class="app-title">Seminar Speaker Rating</h1>
     
-    <span>Number of Speeches <span class="number-data">{{ numOfSpeeches}}</span></span>
+    <div ng-hide="reportIsShown"><span>Number of Speeches <span class="number-data">{{ numOfSpeeches}}</span></span></div>
     
-    <div>You're currently on evaluation <span class="number-data">{{evalCounter}}</span> out of {{numOfEvaluations}}<div>
+    <div ng-hide="reportIsShown">You're currently on evaluation <span class="number-data">{{evalCounter}}</span> out of {{numOfEvaluations}}</div>
      
     <div class="save-status" ng-hide="reportIsShown">{{ saveStatus }}</div>
       
     <table ng-show="showTableUI()" id="main-table" ng-hide="reportIsShown">
-      <thead>
+      <thead ng-show="numOfEvaluations">
         <tr>
           <td>Speech Number</td>
           <td>Speaker Name</td>
