@@ -46,7 +46,7 @@
     
     <div>You're currently on evaluation <span class="number-data">{{evalCounter}}</span> out of {{numOfEvaluations}}<div>
      
-    <div class="save-status">{{ saveStatus }}</div>
+    <div class="save-status" ng-hide="reportIsShown">{{ saveStatus }}</div>
       
     <table ng-show="showTableUI()" id="main-table" ng-hide="reportIsShown">
       <thead>

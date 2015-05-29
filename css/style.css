@@ -282,6 +282,7 @@ td button[disabled] {
 * Analytics Report Styles
 -------------------------------------------*/
 .card {
+  margin-top: 15px;
   width: 90%;
   padding: 15px;
   background-color: #FFF;

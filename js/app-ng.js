@@ -334,7 +334,7 @@ angular.module('rateMySpeaker', [])
     var middleValue =  ascendingArray.length / 2;
     
     // if array has even number of elements...
-    if(ascendingArray.length % 2 === 0) {
+    if(ascendingArray.length % 2 === 0 && ascendingArray.length != 2) {
           
 
       var middleElement = ascendingArray[middleValue - 1],
