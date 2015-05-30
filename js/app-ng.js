@@ -337,8 +337,9 @@ angular.module('rateMySpeaker', [])
     
     var middleValue =  ascendingArray.length / 2;
     
-    // if array has even number of elements...
-    if(ascendingArray.length % 2 === 0 && ascendingArray.length != 2) {
+    // if array has even number of elements and there are not 2 elements...
+    if(ascendingArray.length % 2 === 0 && ascendingArray.length != 2) 
+    {
           
 
       var middleElement = ascendingArray[middleValue - 1],
@@ -346,9 +347,19 @@ angular.module('rateMySpeaker', [])
           
       $scope.median = ((middleElement.average_score + adjacentElement.average_score) / 2).toFixed(2);
     
-    } 
+    }
+    // if array has two elements...
+    else if (ascendingArray.length == 2) 
+    {
+      
+      //get average of two numbers
+      $scope.median = (ascendingArray[0].average_score + ascendingArray[1].average_score) / 2; 
+      
+    }
+    
     // if array has odd number of elements...
-    else {
+    else 
+    {
     
       $scope.median = (ascendingArray[Math.ceil(middleValue) - 1].average_score).toFixed(2);
   
