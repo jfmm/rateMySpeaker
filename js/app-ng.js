@@ -461,16 +461,21 @@ angular.module('rateMySpeaker', ['ngRoute'])
   
  
   
-}) // end of module ; 
+}) // end of speaker rating controller;
+.controller('peval', function ($scope) {
+  
+  $scope.message = "it works";
+
+})//end of program eval controller
+
 .config(['$routeProvider',
     function($routeProvider) {
       $routeProvider
       .when('./#/program', {
-        templateUrl: 'partials/program-evaluation.html',
-        controller: 'rate'
+        templateUrl: 'partials/program-evaluation.html'
       })
       .when('/', {
-        templateUrl: 'partials/speaker-evaluation.html'  
+        templateUrl: 'partials/speaker-evaluation.html'
       });
      //.otherwise({redirectTo: '/'});
   }]);
