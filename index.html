@@ -16,11 +16,15 @@
   <script src="js/app-ng.js"></script>
 </head>
 <body ng-controller="rate">
+  
+  <!-- toolbar -->
   <div class="toolbar">
     <div class="evalControls">
       <label for="numOfEvals">Number of Evaluations</label>
       <input id="numOfEvals" type="number" min="1" ng-model="numOfEvaluations">
     </div>
+    
+    <a class="nav-link" href="./program">Other view</a>
     
     <div class="speechControls">
       <button class="action-btn" ng-click="addSpeech()" ng-if="numOfEvaluations" ng-hide="reportIsShown">
@@ -40,127 +44,11 @@
       </button>
     </div>
   </div>
-  <section id="main-container" >
-      <h1 class="app-title">Seminar Speaker Rating</h1>
-    
-    <div ng-hide="reportIsShown"><span>Number of Speeches <span class="number-data">{{ numOfSpeeches}}</span></span></div>
-    
-    <div ng-hide="reportIsShown">You're currently on evaluation <span class="number-data">{{evalCounter}}</span> out of {{numOfEvaluations}}</div>
-     
-    <div class="save-status" ng-hide="reportIsShown">{{ saveStatus }}</div>
-      
-    <table ng-show="showTableUI()" id="main-table" ng-hide="reportIsShown">
-      <thead ng-show="numOfEvaluations">
-        <tr>
-          <td>Speech Number</td>
-          <td>Speaker Name</td>
-          <td colspan="9">Rating</td>
-          <td>Average</td>
-        </tr>
-        <tbody ng-repeat="speech in ratingData">
-          <tr>
-            <td><span ng-show="isActive($index)" class="active-indicator"></span>Speech # {{$index + 1}}</td>
-            <td>
-              <input class="placeholder" type="text" value="{{speech.speaker_name}}" ng-model="speech.speaker_name" ng-blur="saveSpeakerName($event)">
-            </td>
-            
-            <!-- rating buttons -->
-            <td>
-              <button ng-click="noAnswer($index); updateCounter()" ng-disabled="!isActive($index)">-</button>
-            </td>
-            
-            <td>
-              <button value="1" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">1</button>
-            </td>
-            
-            <td>
-              <button value="2" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">2</button>
-            </td>
-            
-            <td>
-              <button value="3" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">3</button>
-            </td>
-            
-            <td>
-              <button value="4" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">4</button>
-            </td>
-            
-            <td>
-              <button value="5" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">5</button>
-            </td>
-            
-            <td>
-              <button value="6" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">6</button>
-            </td>
-            
-            <td>
-              <button value="7" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">7</button>
-            </td>
-            <td>
-              <button class="delete-btn" ng-click="subtract($index)" ng-disabled="!isActive($index)">+</button>
-            </td>
-            <td class="number-data">
-              {{speech.average_score = speech.total_score / speech.num_of_grades | number: 2}}
-            </td> 
-          </tr>
-        </tbody>
-      </thead>
-    </table>
-      
-      <!-- section analytics report -->
-      <section class="cf" id="analytics-report" ng-if="showAnalytics()">
-        
-        <div class="row cf">
-          <div class="col">
-            <div class="card">
-              <h2 class="card-title">Speaker Score Ranking</h2>
-              <ol>
-                <li ng-repeat="speaker in rankedSpeakers">
-                  {{speaker.name}} got a {{speaker.avg | number: 2}}
-                </li>
-              </ol>
-            </div>
-          </div>
-          
-          <div class="col">
-            <div class="card">
-              <h2 class="card-title">Highest Rated Speaker</h2>
-              <h3 class="number-data">{{rankedSpeakers[0].name}} ( {{rankedSpeakers[0].avg | number:2}} )</h3>
-            </div>
-            
-             <div class="card">
-              <h2 class="card-title">Median</h2>
-              <h3 class="number-data">{{ median }}</h3>
-            </div>
-            
-            <div class="card">
-              <h2 class="card-title">Average</h2>
-              <h3 class="number-data">{{ average }}</h3>
-            </div>
-            
-          </div>
-        </div>
-        
-        
-      </section>
-    
-    
-   <div class="debug" style="text-align:left;">
-      <pre ng-bind="ratingData | json">
-      </pre>
-    </div>
-
-
-  </section>
-    <!-- modal -->
-      <div class="modal-wrap" ng-if="isGradingDone()" ng-hide="reportIsShown">
-          <h2>Woo! All Done!</h2>
-          <p>You have completed grading all {{ numOfEvaluations }} evaluations</p>
-          <p>Click the button below to get an overview of the whole program.</p>
-          <button ng-click="getAnalytics(ratingData); hideModal()" class="get-results-btn">
-            See Report
-          </button>
-      </div>
+  
+  <!-- main template layout containet-->
+  <main ng-view>
+  
+  </main>
 
 </body>
 </html>

@@ -1,8 +1,7 @@
-angular.module('rateMySpeaker', [])
+angular.module('rateMySpeaker', ['ngRoute'])
   .controller('rate', function ($scope) {
 
 
-  
   // if session storage is empty...
   if(sessionStorage.length == 0) {
     
@@ -462,4 +461,16 @@ angular.module('rateMySpeaker', [])
   
  
   
-}); // end of module
+}) // end of module ; 
+.config(['$routeProvider',
+    function($routeProvider) {
+      $routeProvider.
+      when('/program', {
+        templateUrl: 'partials/program-evaluation.html',
+        controller: 'rate'
+      })
+      .when('/', {
+        templateUrl: 'partials/speaker-evaluation.html',
+        controller: 'rate'   
+      });
+  }]);

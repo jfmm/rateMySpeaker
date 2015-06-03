@@ -35,6 +35,8 @@ html {
   float: left;
 }
 
+
+
 input#numOfEvals { 
   width: 45px;
   background-color: inherit;
@@ -47,6 +49,10 @@ input#numOfEvals {
   box-shadow: none; /* removes red outline on firefox */
 }
 
+
+.nav-link {
+  color: white;
+}
 
 .app-title {
   color: #FF4081;
