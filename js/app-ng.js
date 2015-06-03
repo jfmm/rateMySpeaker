@@ -471,7 +471,7 @@ angular.module('rateMySpeaker', ['ngRoute'])
 .config(['$routeProvider',
     function($routeProvider) {
       $routeProvider
-      .when('./#/program', {
+      .when('/program', {
         templateUrl: 'partials/program-evaluation.html'
       })
       .when('/', {
