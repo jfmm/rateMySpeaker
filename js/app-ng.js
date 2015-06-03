@@ -51,6 +51,8 @@ angular.module('rateMySpeaker', ['ngRoute'])
       $scope.ratingData.push(arrayItem);
 			
 	 }
+    
+    
   
 
   
@@ -75,7 +77,7 @@ angular.module('rateMySpeaker', ['ngRoute'])
 
  
   
- 
+
   
  
    /* 
@@ -462,12 +464,24 @@ angular.module('rateMySpeaker', ['ngRoute'])
  
   
 }) // end of speaker rating controller;
+
+
+
+/*
+* Program eval controller
+* TODO: Refactor controllers to own module...
+*/   
 .controller('peval', function ($scope) {
   
   $scope.message = "it works";
 
 })//end of program eval controller
 
+
+  
+/*
+* routing config
+*/  
 .config(['$routeProvider',
     function($routeProvider) {
       $routeProvider
@@ -476,6 +490,6 @@ angular.module('rateMySpeaker', ['ngRoute'])
       })
       .when('/', {
         templateUrl: 'partials/speaker-evaluation.html'
-      });
-     //.otherwise({redirectTo: '/'});
+      })
+     .otherwise({redirectTo: '/'});
   }]);

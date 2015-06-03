@@ -24,6 +24,33 @@ html {
 }
 
 
+.view-menu {
+  float: left;
+}
+
+
+.view-menu ul {
+  list-style: none;
+}
+
+.view-menu li {
+  display: inline;
+}
+
+.view-menu li a {
+  color: white;
+  text-decoration: none;
+}
+
+.view-menu li a:hover {
+  color: pink;
+} 
+
+.view-menu li a:visited {
+  color: white;
+  text-decoration: none;
+}
+
 .speechControls {
   float: right;
 }
