@@ -464,13 +464,13 @@ angular.module('rateMySpeaker', ['ngRoute'])
 }) // end of module ; 
 .config(['$routeProvider',
     function($routeProvider) {
-      $routeProvider.
-      when('/program', {
+      $routeProvider
+      .when('./#/program', {
         templateUrl: 'partials/program-evaluation.html',
         controller: 'rate'
       })
       .when('/', {
-        templateUrl: 'partials/speaker-evaluation.html',
-        controller: 'rate'   
+        templateUrl: 'partials/speaker-evaluation.html'  
       });
+     //.otherwise({redirectTo: '/'});
   }]);
