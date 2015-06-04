@@ -104,8 +104,7 @@ speakerRatingController.controller('rate', ['$scope',
         siblingTab = clickedTab.nextElementSibling || clickedTab.previousElementSibling;
 
     
-    if(clickedTab.getAttribute("class") == null || 
-       clickedTab.getAttribute("class") == "") 
+    if(!clickedTab.classList.contains("view-menu-selected")) 
     {
       
       clickedTab.classList.add("view-menu-selected");
