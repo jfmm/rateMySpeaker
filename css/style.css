@@ -15,29 +15,41 @@ html {
 
 .toolbar {
   width: 100%;
-  height: 60px;
+  height: 48px;
   background-color: #3F51B5;
   box-shadow:  0 2px 5px rgba(0, 0, 0, 0.26);
+  position: fixed;
+  top: 48px;
+  z-index: 100;
+}
+
+
+.view-menu {
+  display: block;
+  background-color: #303F9F;
+  width: 100%;
   position: fixed;
   top: 0;
   z-index: 100;
 }
 
 
-.view-menu {
-  float: left;
-}
-
-
 .view-menu ul {
+  text-transform: uppercase;
   list-style: none;
+  text-align: center;
+  font-size: 0.95em;
 }
 
 .view-menu li {
   display: inline;
+  height: 40px;
+  padding: 13px;
+  margin: 0px 50px;
 }
 
 .view-menu li a {
+  height: inherit;
   color: white;
   text-decoration: none;
 }
@@ -49,6 +61,10 @@ html {
 .view-menu li a:visited {
   color: white;
   text-decoration: none;
+}
+
+.view-menu-selected {
+   border-bottom: 2px #FF4081 solid;
 }
 
 .speechControls {
@@ -229,7 +245,9 @@ tbody td {
   transition: ease all 0.2s;
 }
 
-.rating-btn:focus {
+
+.rating-btn:focus,
+.delete-btn:focus {
   outline: none;
 }
 
@@ -243,7 +261,10 @@ tbody td {
   color: #fff;
 }
 
-.rating-btn[disabled] {
+
+.rating-btn[disabled], 
+.delete-btn[disabled] {
+
   color: #d3d3d3;
   cursor: not-allowed;
   border-color: #d3d3d3;
