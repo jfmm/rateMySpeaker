@@ -1,0 +1,19 @@
+{
+  "name": "ALFA Seminar Analytics",
+  "version": "0.1.1",
+  "homepage": "https://github.com/jfmm/rateMySpeaker",
+  "authors": [
+    "jfmm <moralejf@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.4.0"
+  }
+}
