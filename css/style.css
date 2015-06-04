@@ -219,7 +219,7 @@ tbody td {
 
 }
 
-td button {
+.rating-btn {
   border: 1px solid #C5CAE9;
   border-radius: 50%;
   background: none;
@@ -229,32 +229,40 @@ td button {
   transition: ease all 0.2s;
 }
 
-td button:focus {
+.rating-btn:focus {
   outline: none;
 }
 
-td button:hover {
+.rating-btn:hover {
   border-color: #FF4081;
 }
 
-td button:active {
+.rating-btn:active {
   border-color: #d1376c;
   background-color: #FF4081;
   color: #fff;
 }
 
-td button[disabled] {
+.rating-btn[disabled] {
   color: #d3d3d3;
   cursor: not-allowed;
   border-color: #d3d3d3;
 }
 
 .delete-btn {
+  border: 1px solid #C5CAE9;
+  border-radius: 50%;
+  background: none;
+  height: 30px;
+  width: 30px;
+  transition: ease all 0.2s;
+  
   color: #F44336;
   font-weight: bold;
   border-color: #F44336;
   -webkit-transform: rotate(47deg);
           transform: rotate(47deg);
+  
 }
 
 .number-data {

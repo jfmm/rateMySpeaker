@@ -32,14 +32,7 @@
 
     
     <div class="speechControls">
-      <button class="action-btn" ng-click="addSpeech()" ng-if="numOfEvaluations" ng-hide="reportIsShown">
-        <img src="icons/ic_add_24px.svg">
-      </button>
-      
-      <button class="action-btn" ng-click="removeSpeech()" ng-if="numOfEvaluations" ng-hide="reportIsShown">
-        <img src="icons/ic_remove_24px.svg">
-      </button>
-      
+    
       <button class="action-btn" ng-click="undo()" ng-if="ratingData.length != 0" ng-hide="reportIsShown">
         <img src="icons/ic_undo_24px.svg">
       </button>

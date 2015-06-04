@@ -28,38 +28,38 @@
             
             <!-- rating buttons -->
             <td>
-              <button ng-click="noAnswer($index); updateCounter()" ng-disabled="!isActive($index)">-</button>
+              <button ng-click="noAnswer($index); updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">-</button>
             </td>
             
             <td>
-              <button value="1" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">1</button>
+              <button value="1" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">1</button>
             </td>
             
             <td>
-              <button value="2" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">2</button>
+              <button value="2" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">2</button>
             </td>
             
             <td>
-              <button value="3" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">3</button>
+              <button value="3" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">3</button>
             </td>
             
             <td>
-              <button value="4" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">4</button>
+              <button value="4" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">4</button>
             </td>
             
             <td>
-              <button value="5" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">5</button>
+              <button value="5" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">5</button>
             </td>
             
             <td>
-              <button value="6" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">6</button>
+              <button value="6" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">6</button>
             </td>
             
             <td>
-              <button value="7" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)">7</button>
+              <button value="7" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">7</button>
             </td>
             <td>
-              <button class="delete-btn" ng-click="subtract($index)" ng-disabled="!isActive($index)">+</button>
+              <button class="delete-btn" ng-click="subtract($index)" ng-disabled="!isActive($index)" class="rating-btn">+</button>
             </td>
             <td class="number-data">
               {{speech.average_score = speech.total_score / speech.num_of_grades | number: 2}}
