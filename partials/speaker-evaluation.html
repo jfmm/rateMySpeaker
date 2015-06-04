@@ -9,6 +9,11 @@
     <table ng-show="showTableUI()" id="main-table" ng-hide="reportIsShown">
       <thead ng-show="numOfEvaluations">
         <tr>
+          <td><button class="speech-ctrl" ng-click="addSpeech()">+ ADD</button></td>
+          <td><button class="speech-ctrl" ng-click="removeSpeech()"> - REMOVE</button></td>
+          <td colspan="10"></td>
+        </tr>
+        <tr>
           <td>Speech Number</td>
           <td>Speaker Name</td>
           <td colspan="9">Rating</td>

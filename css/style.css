@@ -157,6 +157,12 @@ table {
   border-radius: 2px;
 }
 
+.speech-ctrl {
+  /* styles add/remove speech buttons*/
+  font-size: 1em;
+  
+}
+
 thead td {
   background-color: #FCFCFC;
   font-size: 1.3em;
