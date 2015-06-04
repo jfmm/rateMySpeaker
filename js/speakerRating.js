@@ -2,7 +2,7 @@
 *  Speaker Rating Contoller, 2015
 *  -------------------------------
 *  This file includes all the logic used to model and control the 
-*  speaker rating viee of the application
+*  speaker rating view of the application
 *
 */
 
@@ -94,7 +94,28 @@ speakerRatingController.controller('rate', ['$scope',
  
   
 
+  /*
+  * Navbar logic for UI view state
+  */
   
+  $scope.toggleView = function(event) {
+    
+    var clickedTab = event.target.parentNode,
+        siblingTab = clickedTab.nextElementSibling || clickedTab.previousElementSibling;
+
+    
+    if(clickedTab.getAttribute("class") == null || 
+       clickedTab.getAttribute("class") == "") 
+    {
+      
+      clickedTab.classList.add("view-menu-selected");
+      siblingTab.classList.remove("view-menu-selected");
+    } 
+  
+  
+  };
+
+    
  
    /* 
   * Loop over speeches and evaluations.

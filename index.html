@@ -21,8 +21,12 @@
   
   <nav class="view-menu">
         <ul>
-          <li class="view-menu-selected"><a href="#/">Speaker Rating</a></li>
-          <li><a href="#program">Program Rating</a></li>
+          <li class="view-menu-selected">
+            <a href="#/" ng-click="toggleView($event)">Speaker Rating</a>
+          </li>
+          <li>
+            <a href="#program" ng-click="toggleView($event)">Program Rating</a>
+          </li>
         </ul>
     </nav>
   <!-- toolbar -->

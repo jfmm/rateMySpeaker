@@ -37,7 +37,7 @@ html {
 .view-menu ul {
   text-transform: uppercase;
   list-style: none;
-  text-align: center;
+  text-align: left;
   font-size: 0.95em;
 }
 
@@ -45,7 +45,12 @@ html {
   display: inline;
   height: 40px;
   padding: 13px;
-  margin: 0px 50px;
+  margin: 0px 5px;
+  transition: 0.2s ease-in all;
+}
+
+.view-menu li:active {
+  background-color: rgba(255, 130, 172, 0.8);
 }
 
 .view-menu li a {

@@ -2,7 +2,7 @@
 *  Program Rating Contoller, 2015
 *  -------------------------------
 *  This file includes all the logic used to model and control the 
-*  speaker rating viee of the application
+*  program rating view of the application
 *
 */
 
