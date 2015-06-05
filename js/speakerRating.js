@@ -15,7 +15,7 @@ var speakerRatingController = angular.module('speakerRatingController', []);
 // define controller
 speakerRatingController.controller('rate', ['$scope', 
  
-  function ($scope) {
+  function ($scope, $route) {
 
 
   // if session storage is empty...
@@ -69,28 +69,11 @@ speakerRatingController.controller('rate', ['$scope',
 	 }
     
     
-  
-
-  
-   function addSavedClass() {
-
-     var names = document.querySelectorAll("input[type=text]");
-
-     for (var i = 0; i < names.length; i++) {
-       names[i].classList.add("saved");
-       names[i].classList.remove("placeholder");
-
-     }
-
-  }  
-    
-  // add "saved" class onLoad to all name inputs and
-  // remove the placeholder class
-  addEventListener('load', addSavedClass, false);
-  
 
   }//end of if block
 
+   
+  
  
   
 
@@ -114,7 +97,50 @@ speakerRatingController.controller('rate', ['$scope',
   
   
   };
+    
+    
+   
+  /*
+  * Utility function, adds .saved class to inputs. This function is triggered
+  * when the partials are loaded in order to give a sense of persistence in the UI.
+  */  
+  
+  function addSavedClass() {
 
+     var names = document.querySelectorAll("input[type=text]");
+
+     for (var i = 0; i < names.length; i++) {
+       names[i].classList.add("saved");
+       names[i].classList.remove("placeholder");
+
+     }
+      
+      console.log("addsavedclass triggered");
+
+  }  
+
+  /* Add "saved" class to inputs when the view is toggled back to 
+  * speaker rating by listening to the routeChange event.
+  */
+  
+  $scope.$on('$routeChangeSuccess', function($event, $template) {
+    
+    var template = $template.loadedTemplateUrl;
+   
+    
+    //set 10ms timeout to let DOM nodes render before triggering addSavedClass();
+    window.setTimeout(function(){
+    
+    // if template is home template trigger addSavedClass
+    if(template == "partials/speaker-evaluation.html") addSavedClass();
+ 
+    }, 10);  
+   
+    
+  });   
+
+    
+    
     
  
    /* 
