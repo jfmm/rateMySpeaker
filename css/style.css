@@ -30,7 +30,6 @@ p {
 
 .view-menu {
   display: inline;
-/*  background-color: #303F9F;*/
   float: left;
 }
 
@@ -420,4 +419,14 @@ div.count {
 
 .card-title {
   color: #3F51B5;
+}
+
+.fav-btn {
+  height: 40px;
+  width: 40px;
+  line-height: 50px;
+}
+
+.favorites-table {
+  box-shadow: none !important;
 }

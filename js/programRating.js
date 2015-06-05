@@ -69,5 +69,14 @@ programRatingController.controller('programEval', ['$scope',
     thisQuestion.no++;
    
    };
+   
+   
+    $scope.favoriteVote = function(index) { 
+    
+      var thisSpeaker = $scope.ratingData[index];
+      
+      thisSpeaker.favorite_votes++;
+      
+    };
 
 }]);

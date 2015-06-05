@@ -12,17 +12,33 @@
         <div class="count">{{question.no}}</div>
       </button>
     </div>
+  </div>
+  
+  <div class="card">
+    <h2 class="card-title">Most Interesting Speaker</h2>
+    <table class="favorites-table">
+      <thead>
+        <tr>
+          <td></td>
+          <td>Speaker</td>
+          <td>Votes</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="speaker in ratingData">
+          <td><button class="rating-btn fav-btn" ng-click="favoriteVote($index)"><img src="./icons/favorite.svg"></button></td>
+          <td>{{speaker.speaker_name}}</td>
+          <td class="number-data">{{speaker.favorite_votes}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  
     
-  <ol>
-    <li ng-repeat="speaker in ratingData">
-        {{speaker.speaker_name}}
-    </li>
-    </ol>
+
+  
 <!--
-  
-  
  <div class="debug" style="text-align:left;">
-    <pre ng-bind="programEvalData | json">
+    <pre ng-bind="ratingData | json">
     </pre>
   </div>
 -->

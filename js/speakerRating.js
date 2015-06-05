@@ -59,7 +59,8 @@ speakerRatingController.controller('rate', ['$scope',
         "num_of_grades" : storedData[i].num_of_grades,
         "scores": storedData[i].scores,
         "total_score": storedData[i].total_score,
-        "average_score" : storedData[i].average_score 
+        "average_score" : storedData[i].average_score,
+        "favorite_votes": storedData[i].favorite_votes
       };
 
 
@@ -215,8 +216,6 @@ speakerRatingController.controller('rate', ['$scope',
   /* 
   * add speeches
   **/
- 
-  
   $scope.addSpeech = function() {
     
       ++$scope.numOfSpeeches; // increase speech count in UI
@@ -226,7 +225,8 @@ speakerRatingController.controller('rate', ['$scope',
         "num_of_grades": $scope.numOfEvaluations,
         "scores": [],
         "total_score" : 0,
-        "average_score" : 0
+        "average_score" : 0,
+        "favorite_votes": 0
       });
   }
   
