@@ -1,9 +1,30 @@
 <section id="main-container" ng-controller="programEval">
-  <h1 class="app-title">Program Evaluation!!!</h1>
-  <h4>Yes we did it, {{ message }}</h4>
+  <h1 class="app-title">Program Evaluation</h1>
+  
+  <div class="card">
+    <h2 class="card-title">Program Overview Questions</h2>
+    <div ng-repeat="question in programEvalData">
+      <p>{{$index +1 }}. {{question.questionText}}</p>
+      <button ng-click="yesVote($index)" class="rating-btn vote-btn">Yes 
+        <div class="count">{{question.yes}}</div>
+      </button>
+      <button ng-click="noVote($index)" class="rating-btn vote-btn"> No 
+        <div class="count">{{question.no}}</div>
+      </button>
+    </div>
+    
   <ol>
     <li ng-repeat="speaker in ratingData">
         {{speaker.speaker_name}}
     </li>
     </ol>
+<!--
+  
+  
+ <div class="debug" style="text-align:left;">
+    <pre ng-bind="programEvalData | json">
+    </pre>
+  </div>
+-->
+
 </section>

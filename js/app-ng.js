@@ -28,7 +28,7 @@ var rateMySeminar = angular.module('rateMySeminar', [
     function($routeProvider) {
       $routeProvider
       .when('/program', {
-        templateUrl: 'partials/program-evaluation.html'
+        templateUrl: 'partials/program-evaluation.html',
       })
       .when('/', {
         templateUrl: 'partials/speaker-evaluation.html'
