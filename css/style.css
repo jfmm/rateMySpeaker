@@ -46,7 +46,8 @@ html {
   height: 40px;
   padding: 13px;
   margin: 0px 5px;
-  transition: 0.2s ease-in all;
+  transition: 0.199s ease-in all;
+
 }
 
 .view-menu li:active {
@@ -146,7 +147,7 @@ input[type="text"] {
   text-align: center;
   border: none;
   border-radius: 50%;
-  box-shadow: 0px 3px 6px -2px #888;
+  box-shadow:  0 0 4px rgba(0, 0, 0, 0.14),0 4px 8px rgba(0, 0, 0, 0.28);
   color: #FFF;
   font-size: 1.8em;
   outline: none;
@@ -175,30 +176,43 @@ table {
   margin-top: 50px;
   width: 100%;
   border: 1px solid #d3d3d3;
-  border-radius: 2px;
+  border-collapse: separate;
+  border-spacing: 0;
+   border-radius: 3px;
+  background-color: #FCFCFC;
+   -webkit-box-shadow: 0px 2px 5px 1px rgba(201,201,201,1);
+  -moz-box-shadow: 0px 2px 5px 1px rgba(201,201,201,1);
+        box-shadow: 0px 2px 5px 1px rgba(201,201,201,1);
 }
 
 .speech-ctrl {
   /* styles add/remove speech buttons*/
-  font-size: 1em;
-  
+  color: #7986CB;
+  text-transform: uppercase;
+  border: none;
+  background-color: transparent;
+  transition: 0.2s ease-in background;
 }
+
+
+
 
 thead td {
   background-color: #FCFCFC;
-  font-size: 1.3em;
+  font-size: 0.95em;
   font-weight: bold;
   padding: 20px 0px;
   color: #3F51B5;
-  border-bottom: 2px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+  border-radius: 2px;
 }
 
 tbody td {
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 100;
   padding: 20px 0px;
   color: #1A237E;
-  border-bottom: 2px solid #d3d3d3;
+  border-bottom: 1px solid #EDEDED;
 }
 
 .active-indicator {
@@ -223,20 +237,22 @@ tbody td {
 
 
 .placeholder {
-  color: #939393;
+  background-color: #FCFCFC;
+  color: #D3D3D3;
   border-bottom: 1px dashed #3e3e3e;
-  background-color:  #ecf0f1;
   border-top: none;
   border-left: none;
-  border-bottom: 1px solid #939393;
+  border-right: none;
+  border-bottom: 1px solid #D3D3D3;
   padding-bottom: 8px;
 }
 
 .saved {
-  color: #C2185B !important;
+  color: #353535 !important;
   border: none !important;
-  background-color: #ecf0f1;
+  background-color: #FCFCFC;
   font-weight: bold;
+  text-align: center;
 
 }
 
