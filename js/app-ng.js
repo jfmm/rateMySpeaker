@@ -3,7 +3,7 @@
 *  -------------------------------
 *  This file is the top-level module for the application.
 *  it injects all dependencies and configures the $route service
-*  used in the applications
+*  used in the application
 *
 */
 

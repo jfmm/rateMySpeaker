@@ -7,7 +7,7 @@
      
   <div class="save-status" ng-hide="reportIsShown">{{ saveStatus }}</div>
       
-  <table ng-show="showTableUI()" id="main-table" ng-hide="reportIsShown">
+  <table ng-if="showTableUI()" id="main-table" ng-hide="reportIsShown">
     <thead ng-show="numOfEvaluations">
       <tr id="table-toolbar">
         <td>
