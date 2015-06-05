@@ -174,7 +174,7 @@ speakerRatingController.controller('rate', ['$scope',
   **/
   $scope.showTableUI = function() {
     
-    if($scope.numOfEvaluations != 0) 
+    if($scope.numOfEvaluations !== 0) 
       return true;
     else
       return false;

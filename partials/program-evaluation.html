@@ -1,4 +1,9 @@
 <section id="main-container" ng-controller="programEval">
   <h1 class="app-title">Program Evaluation!!!</h1>
   <h4>Yes we did it, {{ message }}</h4>
+  <ol>
+    <li ng-repeat="speaker in ratingData">
+        {{speaker.speaker_name}}
+    </li>
+    </ol>
 </section>
