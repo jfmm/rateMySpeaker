@@ -15,7 +15,7 @@ var speakerRatingController = angular.module('speakerRatingController', []);
 // define controller
 speakerRatingController.controller('rate', ['$scope', 
  
-  function ($scope, $route) {
+  function ($scope) {
 
 
   // if session storage is empty...
@@ -108,14 +108,13 @@ speakerRatingController.controller('rate', ['$scope',
   function addSavedClass() {
 
      var names = document.querySelectorAll("input[type=text]");
+  
 
      for (var i = 0; i < names.length; i++) {
        names[i].classList.add("saved");
        names[i].classList.remove("placeholder");
 
      }
-      
-      console.log("addsavedclass triggered");
 
   }  
 
@@ -126,13 +125,15 @@ speakerRatingController.controller('rate', ['$scope',
   $scope.$on('$routeChangeSuccess', function($event, $template) {
     
     var template = $template.loadedTemplateUrl;
-   
+        
     
     //set 10ms timeout to let DOM nodes render before triggering addSavedClass();
-    window.setTimeout(function(){
+    window.setTimeout(function() {
     
-    // if template is home template trigger addSavedClass
-    if(template == "partials/speaker-evaluation.html") addSavedClass();
+    var tableIsInView = document.getElementById("main-table");
+    
+    // if template is home template AND the table UI is in the view, trigger addSavedClass
+    if(template == "partials/speaker-evaluation.html" && tableIsInView) addSavedClass();
  
     }, 10);  
    
