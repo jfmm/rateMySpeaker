@@ -427,6 +427,17 @@ div.count {
   line-height: 50px;
 }
 
+.fav-btn:active {
+  background: none !important;
+}
+
+.fav-btn:active img {
+  -moz-transform: transform: scale(1.2);
+  -webkit-transform:  transform: scale(1.2);
+  -ms-transform:   transform: scale(1.2);
+  transform: scale(1.2);
+}
+
 .favorites-table {
   box-shadow: none !important;
 }
