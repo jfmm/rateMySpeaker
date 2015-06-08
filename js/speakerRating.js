@@ -132,8 +132,6 @@ speakerRatingController.controller('rate', ['$scope',
     var tab = document.querySelectorAll("nav li");
 
     
-    console.log($template.$$route.originalPath);
-    
     //if template is home add active class to first tab
     if(path == "/") {
       tab[0].classList.add("view-menu-selected");

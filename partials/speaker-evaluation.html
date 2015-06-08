@@ -22,8 +22,8 @@
         <td colspan="9">Rating Scores</td>
         <td>Average</td>
       </tr>
-      <tbody ng-repeat="speech in ratingData">
-        <tr>
+      <tbody>
+        <tr ng-repeat="speech in ratingData">
           <td>
             <span ng-show="isActive($index)" class="active-indicator"></span>
             Speech # {{$index + 1}}</td>

@@ -51,8 +51,17 @@ programRatingController.controller('programEval', ['$scope',
      
    ];
    
+  
+   
+    //make a copy of the ratingData JSON object as to not interfere with its order in
+    // the other view
+   $scope.speakerLineup = angular.copy($scope.ratingData);
    
    
+   
+   /*
+   * Voting controller functions
+   */
    
    $scope.yesVote = function(index) {
      
@@ -73,10 +82,28 @@ programRatingController.controller('programEval', ['$scope',
    
     $scope.favoriteVote = function(index) { 
     
-      var thisSpeaker = $scope.ratingData[index];
+      var thisSpeaker = $scope.speakerLineup[index];
       
       thisSpeaker.favorite_votes++;
       
     };
 
+   
+   
+     
+   /*
+   * Sort Speakers from most favorite to least
+   */
+   
+   $scope.sortFavorites = function (data) {
+   
+    //sort ranked speakers array in ascending order
+    data.sort(function(a,b){
+      return b.favorite_votes - a.favorite_votes;
+    });
+     
+   };
+   
+   
+   
 }]);

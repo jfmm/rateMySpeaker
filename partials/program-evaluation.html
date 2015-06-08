@@ -19,13 +19,13 @@
     <table class="favorites-table">
       <thead>
         <tr>
-          <td></td>
+          <td><button ng-click="sortFavorites(speakerLineup)">sort</button></td>
           <td>Speaker</td>
           <td>Votes</td>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="speaker in ratingData">
+        <tr ng-repeat="speaker in speakerLineup">
           <td><button class="rating-btn fav-btn" ng-click="favoriteVote($index)"><img src="./icons/favorite.svg"></button></td>
           <td>{{speaker.speaker_name}}</td>
           <td class="number-data">{{speaker.favorite_votes}}</td>
