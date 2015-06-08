@@ -76,28 +76,6 @@ speakerRatingController.controller('rate', ['$scope',
    
   
  
-  
-
-  /*
-  * Navbar logic for UI view state
-  */
-  
-  $scope.toggleView = function(event) {
-    
-    var clickedTab = event.target.parentNode,
-        siblingTab = clickedTab.nextElementSibling || clickedTab.previousElementSibling;
-
-    
-
-    if(!clickedTab.classList.contains("view-menu-selected")) 
-    {
-      
-      clickedTab.classList.add("view-menu-selected");
-      siblingTab.classList.remove("view-menu-selected");
-    } 
-  
-  
-  };
     
     
    
@@ -119,13 +97,21 @@ speakerRatingController.controller('rate', ['$scope',
 
   }  
 
-  /* Add "saved" class to inputs when the view is toggled back to 
-  * speaker rating by listening to the routeChange event.
+  
+    
+  /* 
+  * Listen to when route changes in the application and perform two taks:
+  * 
+  * 1) Add "saved" class to speaker name inputs when the view is toggled back to 
+  *    speaker rating.
+  * 
+  * 2) handle active state in navigation tabs
   */
   
   $scope.$on('$routeChangeSuccess', function($event, $template) {
     
-    var template = $template.loadedTemplateUrl;
+        
+    var path = $template.$$route.originalPath; // either "/" or "/program"
         
     
     //set 10ms timeout to let DOM nodes render before triggering addSavedClass();
@@ -133,12 +119,31 @@ speakerRatingController.controller('rate', ['$scope',
     
     var tableIsInView = document.getElementById("main-table");
     
-    // if template is home template AND the table UI is in the view, trigger addSavedClass
-    if(template == "partials/speaker-evaluation.html" && tableIsInView) addSavedClass();
+    // if we're on home route AND the table UI is in the view, trigger addSavedClass
+    if(path == "/" && tableIsInView) addSavedClass();
  
-    }, 10);  
-   
+    }, 10);
     
+    
+    
+  /*
+  * Navbar logic for UI view state
+  */
+    var tab = document.querySelectorAll("nav li");
+
+    
+    console.log($template.$$route.originalPath);
+    
+    //if template is home add active class to first tab
+    if(path == "/") {
+      tab[0].classList.add("view-menu-selected");
+      tab[0].nextElementSibling.classList.remove("view-menu-selected");
+    }
+    else {
+      //else add active to program rating tab
+      tab[1].classList.add("view-menu-selected");
+      tab[1].previousElementSibling.classList.remove("view-menu-selected");
+    }   
   });   
 
     
