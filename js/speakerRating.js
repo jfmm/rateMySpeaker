@@ -493,7 +493,6 @@ speakerRatingController.controller('rate', ['$scope',
     
     
     
-    
     //log success message, and time stamp it.
     var now = new Date(),
         hour = now.getHours(),
