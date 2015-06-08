@@ -13,7 +13,7 @@ var speakerRatingController = angular.module('speakerRatingController', []);
 
 
 // define controller
-speakerRatingController.controller('rate', ['$scope', 
+speakerRatingController.controller('speakerRatingCtrl', ['$scope', 
  
   function ($scope) {
 
@@ -231,7 +231,7 @@ speakerRatingController.controller('rate', ['$scope',
         "average_score" : 0,
         "favorite_votes": 0
       });
-  }
+  };
   
   
   /* 
@@ -241,7 +241,7 @@ speakerRatingController.controller('rate', ['$scope',
     
     --$scope.numOfSpeeches;  //decrease speech count in UI
     var lastElemet = $scope.ratingData.pop();
-  }
+  };
   
   
   
@@ -490,6 +490,9 @@ speakerRatingController.controller('rate', ['$scope',
     
     //store current evaluation #
      window.sessionStorage.setItem("currentEvaluation", $scope.evalCounter);
+    
+    //TODO: Store program eval data..
+    window.sessionStorage.setItem("programEval", $scope.programEvalData);
     
     
     

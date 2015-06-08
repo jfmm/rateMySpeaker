@@ -14,7 +14,8 @@
 */
 var rateMySeminar = angular.module('rateMySeminar', [
   
-  'ngRoute', 
+  'ngRoute',
+  'toolbarController',
   'speakerRatingController',
   'programRatingController'
   
