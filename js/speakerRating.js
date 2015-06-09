@@ -277,10 +277,18 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
   
   $scope.undo = function() {
     
-    if(currentSpeech > 1)  
-      --currentSpeech;
-     else 
-      currentSpeech = $scope.ratingData.length;
+    if(currentSpeech > 1) {
+    
+        --currentSpeech;
+    } 
+      
+     else {
+     
+        currentSpeech = $scope.ratingData.length; // focus the last row
+        $scope.evalCounter--; //update the eval counter
+     
+     }
+    
     
   
     var speechToCorrect = $scope.ratingData[currentSpeech - 1]; 
