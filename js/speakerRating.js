@@ -267,38 +267,31 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
   };
   
   
-   /* 
-  * subtract last grading
-  **/
-  $scope.subtract = function(index) {
-  
-    
-    var thisSpeech = $scope.ratingData[index];
-    var lastRatingIndex = thisSpeech.scores.length -1;
-    
-    //subtract the last value that was added from the total score
-    thisSpeech.total_score -= thisSpeech.scores[lastRatingIndex];
-    
-    //delete from array
-    thisSpeech.scores.splice(lastRatingIndex, 1);
-  
-  };
-  
+
   
   
   /*
-  * undo button
+  * undo button subtracts the last grading and focuses on the previous row so that
+  * a new value can be input
   */
   
   $scope.undo = function() {
     
-    if(currentSpeech > 1) { 
+    if(currentSpeech > 1)  
       --currentSpeech;
-    } else {
+     else 
       currentSpeech = $scope.ratingData.length;
-    }
+    
   
-   
+    var speechToCorrect = $scope.ratingData[currentSpeech - 1]; 
+    var lastScoreIndex = speechToCorrect.scores.length - 1;
+  
+    //subtract the last value that was added from the total score
+    speechToCorrect.total_score -= speechToCorrect.scores[lastScoreIndex];
+
+    //delete that value from scores array
+    speechToCorrect.scores.splice(lastScoreIndex, 1);  
+    
   
   };
   

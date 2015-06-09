@@ -19,7 +19,7 @@
       <tr>
         <td>Speech Number</td>
         <td>Speaker Name</td>
-        <td colspan="9">Rating Scores</td>
+        <td colspan="8">Rating Scores</td>
         <td>Average</td>
       </tr>
       <tbody>
@@ -63,9 +63,7 @@
           <td>
             <button value="7" ng-click="add($index, $event); updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">7</button>
           </td>
-          <td>
-            <button class="delete-btn" ng-click="subtract($index)" ng-disabled="!isActive($index)" class="rating-btn">+</button>
-          </td>
+         
           <td class="number-data">
             {{speech.average_score = speech.total_score / speech.num_of_grades() | number: 2}}
           </td> 
