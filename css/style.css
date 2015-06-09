@@ -404,9 +404,14 @@ ol li {
 /*----------------------------------/
 * Program Evaluation styles
 *-----------------------------------*/
+.question {
+  margin-top: 30px;
+}
+
 .vote-btn {
   height: 70px;
   width: 70px;
+  margin: 0px 10px;
 }
 
 .vote-btn:active { color: #FFF;}

@@ -3,15 +3,18 @@
   
   <div class="card">
     <h2 class="card-title">Program Overview Questions</h2>
-    <div ng-repeat="question in programEvalData">
+    <div ng-repeat="question in programEvalData" class="question">
       <p>{{$index +1 }}. {{question.questionText}}</p>
-      <button ng-click="yesVote($index)" class="rating-btn vote-btn">Yes 
+      
+      <button data-value="yes" ng-click="vote($index, $event, 'programEvalData')" class="rating-btn vote-btn">Yes 
         <div class="count">{{question.yes}}</div>
       </button>
-      <button ng-click="noVote($index)" class="rating-btn vote-btn"> No 
+      
+      <button data-value="no" ng-click="vote($index, $event, 'programEvalData')" class="rating-btn vote-btn"> No 
         <div class="count">{{question.no}}</div>
       </button>
-      <button ng-click="noAnswer($index)" class="rating-btn vote-btn"> N/A 
+      
+      <button data-value="n_a" ng-click="vote($index, $event, 'programEvalData')" class="rating-btn vote-btn"> N/A 
         <div class="count">{{question.n_a}}</div>
       </button>
     </div>
@@ -38,6 +41,31 @@
   </div>  
     
 
+<div class="card">
+  <h2 class="card-title">Program Quality Rating</h2>
+  <div ng-repeat="question in programQualityRating" class="question">
+      <p>{{$index +1 }}. {{question.questionText}}</p>
+      <button data-value="excellent" ng-click="vote($index, $event, 'programQualityRating')" class="rating-btn vote-btn">Excellent 
+        <div class="count">{{question.excellent}}</div>
+      </button>
+    
+      <button data-value="good" ng-click="vote($index, $event, 'programQualityRating')" class="rating-btn vote-btn">Good
+        <div class="count">{{question.good}}</div>
+      </button>
+    
+      <button data-value="fair" ng-click="vote($index, $event, 'programQualityRating')" class="rating-btn vote-btn">Fair 
+        <div class="count">{{question.fair}}</div>
+      </button>
+    
+       <button data-value="poor" ng-click="vote($index, $event, 'programQualityRating')" class="rating-btn vote-btn">Poor 
+        <div class="count">{{question.poor}}</div>
+      </button>
+    
+      <button data-value="n_a" ng-click="vote($index, $event, 'programQualityRating')" class="rating-btn vote-btn"> N/A 
+        <div class="count">{{question.n_a}}</div>
+      </button>
+    </div>
+</div>
   
 <!--
  <div class="debug" style="text-align:left;">

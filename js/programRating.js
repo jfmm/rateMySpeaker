@@ -18,7 +18,7 @@ programRatingController.controller('programEval', ['$scope',
 
    
    /*
-   * Program Evaluation questions data
+   * Program Evaluation Overview questions data
    **/
    $scope.programEvalData = [
     
@@ -52,11 +52,42 @@ programRatingController.controller('programEval', ['$scope',
       yes: 0,
       no: 0,
       n_a: 0 // to count no answers
+     },
+     {
+      questionText: "Do you think your agency would be interested in a similar customized Public Policy Seminar in Washington D.C. or at your facility?",
+      yes: 0,
+      no: 0,
+      n_a: 0 // to count no answers
      }
      
    ];
    
   
+   
+    /*
+   * Program Evaluation Overview Quality questions data
+   **/
+   $scope.programQualityRating = [
+     {
+       questionText: "How would you rate the audience participation?",
+       excellent: 0,
+       good: 0,
+       fair: 0,
+       poor: 0,
+       n_a: 0 // to count no answers
+     },
+     {
+       questionText: "How would you rate this program?",
+       excellent: 0,
+       good: 0,
+       fair: 0,
+       poor: 0,
+       n_a: 0 // to count no answers
+     }
+   
+   ];
+   
+   
    
     //make a copy of the ratingData JSON object as to not interfere with its order in
     // the other view. The speakerLineup scope var populates the favorite speaker UI
@@ -68,29 +99,30 @@ programRatingController.controller('programEval', ['$scope',
    * Voting controller functions
    */
    
-   $scope.yesVote = function(index) {
-     
-    var thisQuestion = $scope.programEvalData[index];
+   
+   
+  /*
+   * Voting method
+   */
+   
+   $scope.vote = function(index, event, object) {
     
-     thisQuestion.yes++;
+    var thisSpeech = $scope[object][index];
+    
+    
+     //if the click's source is the div nested within the button, get the value of the 
+     // parent, aka the button.
+     if(event.target.tagName == "DIV") 
+      var value = event.target.parentNode.dataset.value;
+ 
+     else
+       var value = event.target.dataset.value;
+    
+     
+      parseInt($scope[object][index][value] += 1);
    
    };
-   
-   
-   $scope.noVote = function(index) {
-   
-    var thisQuestion = $scope.programEvalData[index];
-    thisQuestion.no++;
-   
-   };
-   
-   
-   $scope.noAnswer = function(index) {
-   
-    var thisQuestion = $scope.programEvalData[index];
-    thisQuestion.n_a++;
-   
-   };
+
    
    
     $scope.favoriteVote = function(index) { 
@@ -102,6 +134,8 @@ programRatingController.controller('programEval', ['$scope',
     };
 
    
+   
+
    
      
    /*
