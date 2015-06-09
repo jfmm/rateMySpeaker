@@ -33,7 +33,7 @@
 
           <!-- rating buttons -->
           <td>
-            <button ng-click="noAnswer($index); updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">-</button>
+            <button ng-click="updateCounter()" ng-disabled="!isActive($index)" class="rating-btn">-</button>
           </td>
 
           <td>
@@ -67,7 +67,7 @@
             <button class="delete-btn" ng-click="subtract($index)" ng-disabled="!isActive($index)" class="rating-btn">+</button>
           </td>
           <td class="number-data">
-            {{speech.average_score = speech.total_score / speech.num_of_grades | number: 2}}
+            {{speech.average_score = speech.total_score / speech.num_of_grades() | number: 2}}
           </td> 
         </tr>
       </tbody>

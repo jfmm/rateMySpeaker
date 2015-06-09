@@ -56,11 +56,13 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
 			
       var arrayItem = {
         "speaker_name" : storedData[i].speaker_name,
-        "num_of_grades" : storedData[i].num_of_grades,
         "scores": storedData[i].scores,
         "total_score": storedData[i].total_score,
         "average_score" : storedData[i].average_score,
-        "favorite_votes": storedData[i].favorite_votes
+        "favorite_votes": storedData[i].favorite_votes,
+        "num_of_grades" : function() {
+          return this.scores.length;
+        }
       };
 
 
@@ -225,11 +227,13 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
 
       $scope.ratingData.push({
         "speaker_name": "New Speaker",
-        "num_of_grades": $scope.numOfEvaluations,
         "scores": [],
         "total_score" : 0,
         "average_score" : 0,
-        "favorite_votes": 0
+        "favorite_votes": 0,
+        "num_of_grades": function () {
+          return this.scores.length;
+        }
       });
   };
   
@@ -298,19 +302,6 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
   
   };
   
-  
-  
-  
-   /* 
-  * No answer button
-  **/
-  $scope.noAnswer = function(index) {
-    
-    var thisSpeech = $scope.ratingData[index];
-    
-    thisSpeech.num_of_grades -= 1; // subtract 1 from the number of responses
-    
-  }
   
   
   
@@ -492,7 +483,7 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
      window.sessionStorage.setItem("currentEvaluation", $scope.evalCounter);
     
     //TODO: Store program eval data..
-    window.sessionStorage.setItem("programEval", $scope.programEvalData);
+    //window.sessionStorage.setItem("programEval", $scope.programEvalData);
     
     
     
