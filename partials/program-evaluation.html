@@ -65,13 +65,32 @@
         <div class="count">{{question.n_a}}</div>
       </button>
     </div>
-</div>
   
-<!--
+  <!-- number program rating-->
+  <div>
+    <p>The overall evaluation of this program</p>
+    <button ng-click=""  class="rating-btn">-</button>
+    
+    <button value="1" ng-click="rateProgram($event)" class="rating-btn">1</button>
+    
+    <button value="2" ng-click="rateProgram($event)" class="rating-btn">2</button>
+    
+    <button value="3" ng-click="rateProgram($event)" class="rating-btn">3</button>
+    
+    <button value="4" ng-click="rateProgram($event)" class="rating-btn">4</button>
+    
+    <button value="5" ng-click="rateProgram($event)" class="rating-btn">5</button>
+    
+    <button value="6" ng-click="rateProgram($event)" class="rating-btn">6</button>
+    
+    <button value="7" ng-click="rateProgram($event)" class="rating-btn">7</button>
+    
+    <div>AVERAGE: {{ programOverallRating.average_score = programOverallRating.total_score / programOverallRating.num_of_grades() | number: 2}}</div>
+  </div>
+  
  <div class="debug" style="text-align:left;">
-    <pre ng-bind="ratingData | json">
+    <pre ng-bind="programOverallRating | json">
     </pre>
   </div>
--->
 
 </section>

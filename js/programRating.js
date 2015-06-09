@@ -89,27 +89,34 @@ programRatingController.controller('programEval', ['$scope',
    
    
    
+   
+   $scope.programOverallRating = {
+      "scores": [],
+      "total_score" : 0,
+      "average_score" : 0,
+      "num_of_grades" : function() {
+        return this.scores.length;
+      }
+      
+   };
+   
+   
+   
     //make a copy of the ratingData JSON object as to not interfere with its order in
     // the other view. The speakerLineup scope var populates the favorite speaker UI
    $scope.speakerLineup = angular.copy($scope.ratingData);
    
    
    
-   /*
-   * Voting controller functions
-   */
-   
    
    
   /*
-   * Voting method
+   * Voting methods
    */
    
    $scope.vote = function(index, event, object) {
     
-    var thisSpeech = $scope[object][index];
-    
-    
+   
      //if the click's source is the div nested within the button, get the value of the 
      // parent, aka the button.
      if(event.target.tagName == "DIV") 
@@ -136,6 +143,24 @@ programRatingController.controller('programEval', ['$scope',
    
    
 
+   /*
+   * rate program controller funciton updates the overall program
+   * rating data object.
+   */
+   
+   $scope.rateProgram = function(event) {
+    
+     var value = parseInt(event.target.value);
+     
+     $scope.programOverallRating.scores.push(value);
+      
+     $scope.programOverallRating.total_score += value;
+     
+   };
+   
+   
+   
+   
    
      
    /*
@@ -150,10 +175,5 @@ programRatingController.controller('programEval', ['$scope',
     });
      
    };
-   
-   
 
-   
-   
-   
 }]);
