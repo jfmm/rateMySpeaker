@@ -94,6 +94,16 @@ programRatingController.controller('programEval', ['$scope',
       "scores": [],
       "total_score" : 0,
       "average_score" : 0,
+      "score_instances": {   
+        "rn_a": 0,
+        "r1":   0,
+        "r2":   0,
+        "r3":   0,
+        "r4":   0,
+        "r5":   0,
+        "r6":   0,
+        "r7":   0
+      },
       "num_of_grades" : function() {
         return this.scores.length;
       }
@@ -150,15 +160,17 @@ programRatingController.controller('programEval', ['$scope',
    
    $scope.rateProgram = function(event) {
     
-     var value = parseInt(event.target.value);
+     var value = event.target.value;
+     $scope.programOverallRating.score_instances["r" + value] += 1;
      
-     $scope.programOverallRating.scores.push(value);
-      
-     $scope.programOverallRating.total_score += value;
-     
+     // add only the numeric values to the average of the program
+     if( value !== "n_a") {
+       value = parseInt(value);
+       $scope.programOverallRating.scores.push(value);
+       $scope.programOverallRating.total_score += value;
+     }
+
    };
-   
-   
    
    
    
