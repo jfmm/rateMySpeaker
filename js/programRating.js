@@ -97,11 +97,17 @@ programRatingController.controller('programEval', ['$scope',
       "score_instances": {   
         "rn_a": 0,
         "r1":   0,
+        "r1.5": 0,
         "r2":   0,
+        "r2.5": 0,
         "r3":   0,
+        "r3.5": 0,
         "r4":   0,
+        "r4.5": 0,
         "r5":   0,
+        "r5.5": 0,
         "r6":   0,
+        "r6.5": 0,
         "r7":   0
       },
       "num_of_grades" : function() {
@@ -161,11 +167,12 @@ programRatingController.controller('programEval', ['$scope',
    $scope.rateProgram = function(event) {
     
      var value = event.target.value;
+     console.log(value);
      $scope.programOverallRating.score_instances["r" + value] += 1;
      
      // add only the numeric values to the average of the program
      if( value !== "n_a") {
-       value = parseInt(value);
+       value = parseFloat(value);
        $scope.programOverallRating.scores.push(value);
        $scope.programOverallRating.total_score += value;
      }
@@ -178,7 +185,6 @@ programRatingController.controller('programEval', ['$scope',
    /*
    * Sort Speakers from most favorite to least
    */
-   
    $scope.sortFavorites = function (data) {
    
     //sort ranked speakers array in ascending order
