@@ -123,6 +123,7 @@ programRatingController.controller('programEval', ['$scope',
    $scope.speakerLineup = angular.copy($scope.ratingData);
    
    
+   $scope.save = function(x) { console.log("overwritten!" + x);};
    
    
    

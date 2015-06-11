@@ -79,7 +79,8 @@
           <td class="number-data">AVERAGE: {{ programOverallRating.average_score = programOverallRating.total_score / programOverallRating.num_of_grades() | number: 2}}</td>
         </tr>
       </thead>
-      <tr>
+      
+       <tr>
         <td><button value="7" ng-click="rateProgram($event)" class="rating-btn">7</button></td>
         <td colspan="1">{{programOverallRating.score_instances['r7']}}</td>
       </tr>
@@ -135,13 +136,17 @@
         <td><button  value="n_a" ng-click="rateProgram($event)" class="rating-btn">n/a</button></td>
          <td>{{programOverallRating.score_instances.rn_a}}</td>
       </tr>
+      
+     
     </table>
 
     
+<!--
   
  <div class="debug" style="text-align:left;">
     <pre ng-bind="programOverallRating | json">
     </pre>
   </div>
+-->
 
 </section>
