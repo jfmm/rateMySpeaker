@@ -18,11 +18,9 @@
   <script src="js/speakerRating.js"></script>
   <script src="js/programRating.js"></script>
 </head>
-<body ng-controller="speakerRatingCtrl">
-  
-  
-  <!-- toolbar -->
-  <div class="toolbar">
+<body ng-controller="toolbarCtrl">
+     <!-- toolbar: moved to bottom to inherit parent scope -->
+    <div class="toolbar" >
     <nav class="view-menu">
         <ul>
           <li>
@@ -45,11 +43,14 @@
         <img src="icons/ic_undo_24px.svg">
       </button>
       
-      <button class="action-btn" ng-click="save(ratingData)" ng-if="ratingData.length != 0" ng-hide="reportIsShown">
+      <button class="action-btn" ng-click="save(ratingData, numOfSpeeches)" ng-if="ratingData.length != 0" ng-hide="reportIsShown">
         <img src="icons/ic_save_24px.svg">
       </button>
     </div>
   </div>
+  
+ 
+
   
   <!-- main template layout container-->
   <main ng-view>
