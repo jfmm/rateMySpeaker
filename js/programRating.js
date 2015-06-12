@@ -17,9 +17,6 @@ programRatingController.controller('programEval', ['$scope',
  function($scope) {
 
    
-  
-   
-   
     //make a copy of the ratingData JSON object as to not interfere with its order in
     // the other view. The speakerLineup scope var populates the favorite speaker UI
    $scope.speakerLineup = angular.copy($scope.ratingData);

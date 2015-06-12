@@ -38,52 +38,9 @@ toolbarController.controller('toolbarCtrl', ['$scope',
     
     //reset JSON object
     $scope.ratingData = []; //will containt JSON Object
-
-  }
-  
-  else {
-  
-    //use stored values...
-    $scope.numOfEvaluations = parseInt(sessionStorage.numOfEvaluations);
-    $scope.numOfSpeeches = parseInt(sessionStorage.numOfSpeeches);
-    $scope.evalCounter = parseInt(sessionStorage.currentEvaluation);
-    $scope.saveStatus = sessionStorage.lastSaved;
-    
-    $scope.currentSpeech = parseInt(sessionStorage.currentSpeech);
-    
-    // initialize blank array for JSON
-    $scope.ratingData = [];
-    
-    
-    //parse stored JSON string and populate new array
-    var storedData = JSON.parse(sessionStorage.speechRatings);
-    
-    for(var i = 0; i < storedData.length; i++) {
-			
-      var arrayItem = {
-        "speaker_name" : storedData[i].speaker_name,
-        "scores": storedData[i].scores,
-        "total_score": storedData[i].total_score,
-        "average_score" : storedData[i].average_score,
-        "favorite_votes": storedData[i].favorite_votes,
-        "num_of_grades" : function() {
-          return this.scores.length;
-        }
-      };
-
-
-      // push saved data into speech data array
-      $scope.ratingData.push(arrayItem);
-			
-	 }
-    
     
 
-  }//end of if block
-
-   
-   
-   /*
+    /*
    * Program Evaluation VIEW questions data Model
    **/
    $scope.programEvalData = [
@@ -129,6 +86,70 @@ toolbarController.controller('toolbarCtrl', ['$scope',
    ];
    
   
+
+  } // end IF
+  
+  else {
+  
+    //use stored values...
+    $scope.numOfEvaluations = parseInt(sessionStorage.numOfEvaluations);
+    $scope.numOfSpeeches = parseInt(sessionStorage.numOfSpeeches);
+    $scope.evalCounter = parseInt(sessionStorage.currentEvaluation);
+    $scope.saveStatus = sessionStorage.lastSaved; 
+    $scope.currentSpeech = parseInt(sessionStorage.currentSpeech);
+    
+    // initialize blank arrays for JSON dat models
+    $scope.ratingData = [];
+    $scope.programEvalData = [];
+    $scope.programOverallRating = [];
+    $scope.programQualityRating = [];
+    
+    
+    //parse stored JSON string and populate new array
+    var storedSpeechRatings = JSON.parse(sessionStorage.speechRatings);
+    
+    for(var i = 0; i < storedSpeechRatings.length; i++) {
+			
+      var arrayItem = {
+        "speaker_name" : storedSpeechRatings[i].speaker_name,
+        "scores": storedSpeechRatings[i].scores,
+        "total_score": storedSpeechRatings[i].total_score,
+        "average_score" : storedSpeechRatings[i].average_score,
+        "favorite_votes": storedSpeechRatings[i].favorite_votes,
+        "num_of_grades" : function() {
+          return this.scores.length;
+        }
+      };
+
+
+      // push saved data into speech data array
+      $scope.ratingData.push(arrayItem);
+			
+	 }
+    
+    
+    
+    
+    var storedProgramEvalData = JSON.parse(sessionStorage.programEvalData);
+    
+    for(var i = 0; i < storedProgramEvalData.length; i++) {
+      var arrayItem = {
+        "questionText": storedProgramEvalData[i].questionText,
+        "yes": storedProgramEvalData[i].yes,
+        "no": storedProgramEvalData[i].no,
+        "n_a": storedProgramEvalData[i].n_a // to count no answers
+      };
+    
+      $scope.programEvalData.push(arrayItem);
+    }
+
+    
+
+  }//end of if/else block
+
+                                             
+   
+   
    
     /*
    * Program Evaluation Overview Quality questions data
@@ -207,8 +228,14 @@ toolbarController.controller('toolbarCtrl', ['$scope',
     //store current evaluation #
      window.sessionStorage.setItem("currentEvaluation", $scope.evalCounter);
     
-    //TODO: Store program eval data..
-    window.sessionStorage.setItem("programEval", JSON.stringify($scope.programEvalData));
+    //Store program overview eval data..
+    window.sessionStorage.setItem("programEvalData", JSON.stringify($scope.programEvalData));
+    
+    //store program overall rating..
+    window.sessionStorage.setItem("programOverallEvalData", JSON.stringify($scope.programOverallRating));
+    
+    //store quality rating rating..
+    window.sessionStorage.setItem("qualityData", JSON.stringify($scope.programQualityRating));
     
     
     
@@ -319,7 +346,11 @@ toolbarController.controller('toolbarCtrl', ['$scope',
   }); 
    
 
-  $scope.$on('updateCounter', 
+  
+  /* 
+  * Loop over speeches and evaluations.
+  **/
+   $scope.$on('updateCounter', 
 
      function(){
      // if we finish inputing an evaluation....
@@ -332,6 +363,8 @@ toolbarController.controller('toolbarCtrl', ['$scope',
 
     ++$scope.currentSpeech
   });
- 
+   
+   
+
  
  }]);

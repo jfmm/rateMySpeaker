@@ -18,21 +18,14 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
   function ($scope) {
 
     
+  
     
    /* 
   * Loop over speeches and evaluations.
   **/
   $scope.updateCounter = function() {
-
-    // if we finish inputing an evaluation....
-//    if($scope.currentSpeech >= $scope.numOfSpeeches) { 
-//      
-//      $scope.evalCounter++; // increase evalutaion #
-//      $scope.currentSpeech = 0; //reset speech #
-//   
-//    }
-  
-     $scope.$emit("updateCounter");
+      // emit event to update counter in toolbar.js controller
+     $scope.$emit("updateCounter"); 
      
   };
   
@@ -332,7 +325,8 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
 
     // if the grading is done and if the ranked speakers have been populated,
     // we show the analytics report section
-    if($scope.isGradingDone() && $scope.rankedSpeakers.length != 0)
+    //if($scope.isGradingDone() && $scope.rankedSpeakers.length != 0)
+    if($scope.isGradingDone())
       return true;
 
   }; 
@@ -340,12 +334,14 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
     
     
     
+      
   //report is not shown until grading is done
-  $scope.reportIsShown = false;  
+  $scope.reportIsShown = false;
    
   
   // hide modal after report button is clicked
   $scope.hideModal = function() { 
+    
     
     $scope.reportIsShown = true; //hide modal and show report
 
