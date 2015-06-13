@@ -84,12 +84,67 @@ toolbarController.controller('toolbarCtrl', ['$scope',
      }
      
    ];
+    
+    
+    
+       
+    /*
+   * Program Evaluation Overview Quality questions data
+   **/
+   $scope.programQualityRating = [
+     {
+       questionText: "How would you rate the audience participation?",
+       excellent: 0,
+       good: 0,
+       fair: 0,
+       poor: 0,
+       n_a: 0 // to count no answers
+     },
+     {
+       questionText: "How would you rate this program?",
+       excellent: 0,
+       good: 0,
+       fair: 0,
+       poor: 0,
+       n_a: 0 // to count no answers
+     }
    
+   ];
+    
+    
   
+   
+   $scope.programOverallRating = {
+      "scores": [],
+      "total_score" : 0,
+      "average_score" : 0,
+      "score_instances": {   
+        "rn_a": 0,
+        "r1":   0,
+        "r1.5": 0,
+        "r2":   0,
+        "r2.5": 0,
+        "r3":   0,
+        "r3.5": 0,
+        "r4":   0,
+        "r4.5": 0,
+        "r5":   0,
+        "r5.5": 0,
+        "r6":   0,
+        "r6.5": 0,
+        "r7":   0
+      },
+      "num_of_grades" : function() {
+        return this.scores.length;
+      }
+      
+   };
+    
 
   } // end IF
   
-  else {
+  else 
+  {
   
     //use stored values...
     $scope.numOfEvaluations = parseInt(sessionStorage.numOfEvaluations);
@@ -144,70 +199,44 @@ toolbarController.controller('toolbarCtrl', ['$scope',
     }
 
     
+    
+    
+    
+    var storedQualityRating = JSON.parse(sessionStorage.qualityData);
+    
+    for(var i = 0; i < storedQualityRating.length; i++) {
+    
+      var arrayItem = {
+          questionText: storedQualityRating[i].questionText,
+          excellent: storedQualityRating[i].excellent,
+          good: storedQualityRating[i].good,
+          fair: storedQualityRating[i].fair,
+          poor: storedQualityRating[i].poor,
+          n_a: storedQualityRating[i].n_a // to count no answers
+      };
+      
+      $scope.programQualityRating.push(arrayItem);
+      
+    }
+    
+    
+    
+    
+    
+    
+    
+    var storedOverallRating = JSON.parse(sessionStorage.programOverallEvalData);
+    $scope.programOverallRating = storedOverallRating;
+    $scope.programOverallRating.num_of_grades = function () {
+      return this.scores.length;
+    };
 
   }//end of if/else block
 
                                              
-   
-   
-   
-    /*
-   * Program Evaluation Overview Quality questions data
-   **/
-   $scope.programQualityRating = [
-     {
-       questionText: "How would you rate the audience participation?",
-       excellent: 0,
-       good: 0,
-       fair: 0,
-       poor: 0,
-       n_a: 0 // to count no answers
-     },
-     {
-       questionText: "How would you rate this program?",
-       excellent: 0,
-       good: 0,
-       fair: 0,
-       poor: 0,
-       n_a: 0 // to count no answers
-     }
-   
-   ];
-   
-   
-   
-   
-   $scope.programOverallRating = {
-      "scores": [],
-      "total_score" : 0,
-      "average_score" : 0,
-      "score_instances": {   
-        "rn_a": 0,
-        "r1":   0,
-        "r1.5": 0,
-        "r2":   0,
-        "r2.5": 0,
-        "r3":   0,
-        "r3.5": 0,
-        "r4":   0,
-        "r4.5": 0,
-        "r5":   0,
-        "r5.5": 0,
-        "r6":   0,
-        "r6.5": 0,
-        "r7":   0
-      },
-      "num_of_grades" : function() {
-        return this.scores.length;
-      }
-      
-   };
-   
-   
-   
  
    
-    /*
+  /*
   * Save Button
   * store current data into session storage
   */
