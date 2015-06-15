@@ -140,6 +140,9 @@ toolbarController.controller('toolbarCtrl', ['$scope',
       
    };
     
+    
+ 
+    
 
   } // end loading default data
   
@@ -408,21 +411,16 @@ toolbarController.controller('toolbarCtrl', ['$scope',
       case "ratingData": undoSpeakerRatingData();
       break;
         
-      case "programEvalData": undoProgramEvalData();
+      case "programEvalData":
+      case "programQualityRating":  undoProgramModelData();
+      break;
+        
+      case "programOverallRating": undoProgramRating();
       break;
         
       default: alert("You have not input any data! There's nothing to undo");
     
     }
-    
-    
-    if($scope.lastModelModified === "speakerLineup") {
-      console.log("reduce votes");
-    }
-    
-    
-    
-    
     
   
   };
@@ -478,15 +476,39 @@ toolbarController.controller('toolbarCtrl', ['$scope',
    * Undo method for program overview questions
    */
    
-   function undoProgramEvalData() {
+   function undoProgramModelData() {
    
    
      var index = $scope.lastModelModifiedElementData.index,
          value = $scope.lastModelModifiedElementData.value;
      
-     $scope.programEvalData[index][value] -= 1;
+
+      $scope[$scope.lastModelModified][index][value] -= 1;
+   
    
    }
+   
+   
+   
+    /*
+   * Undo method for program rating
+   */
+   function undoProgramRating() {
+     
+     var rating = $scope.lastModelModifiedElementData.rating;
+    
+     // subtract the number of instances of the last rating
+     $scope[$scope.lastModelModified]["score_instances"][rating] -= 1; 
+     
+     
+     //delete the last element in the array
+     var lastElement = $scope[$scope.lastModelModified]["scores"].pop();
+     
+      // subtract the value from the total score
+     $scope[$scope.lastModelModified]["total_score"] -= lastElement;
+   
+   }
+   
 
  
  }]);

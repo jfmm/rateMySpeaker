@@ -52,7 +52,7 @@ programRatingController.controller('programEval', ['$scope',
       
       thisSpeaker.favorite_votes++;
       
-      $scope.$emit("modelUpdated", "speakerLineup");
+      $scope.$emit("modelUpdated", "speakerLineup", {index: index});
       
     };
 
@@ -77,7 +77,8 @@ programRatingController.controller('programEval', ['$scope',
        $scope.programOverallRating.total_score += value;
      }
      
-       $scope.$emit("modelUpdated", "programOverallRating");
+     // emit the data that was just changed 
+     $scope.$emit("modelUpdated", "programOverallRating", {rating: "r" + value, value: value});
 
    };
    
