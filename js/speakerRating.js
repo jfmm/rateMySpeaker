@@ -68,6 +68,8 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
     
 
     $scope.$emit("addedSpeech"); // emit an event up the scope tree
+        
+
       
     $scope.ratingData.push({
         "speaker_name": "New Speaker",
@@ -79,6 +81,9 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
           return this.scores.length;
         }
       });
+    
+  
+
   };
   
   
@@ -88,7 +93,6 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
   $scope.removeSpeech = function() {
     
     $scope.$emit("removedSpeech");
-   // --$scope.numOfSpeeches;  //decrease speech count in UI
     var lastElemet = $scope.ratingData.pop(); //get element out of array
   };
   
@@ -108,48 +112,14 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
     
     // push value to populate scores array
     thisSpeech.scores.push(value);
+    
+    $scope.$emit("modelUpdated", "ratingData");
   
   };
   
   
 
-  
-  
-  /*
-  * undo button subtracts the last grading and focuses on the previous row so that
-  * a new value can be input
-  */
-  
-  $scope.undo = function() {
-    
-    if($scope.currentSpeech > 1) {
-    
-        --$scope.currentSpeech;
-    } 
-      
-     else {
-     
-        $scope.currentSpeech = $scope.ratingData.length; // focus the last row
-        $scope.evalCounter--; //update the eval counter
-     
-     }
-    
-    
-  
-    var speechToCorrect = $scope.ratingData[$scope.currentSpeech - 1]; 
-    var lastScoreIndex = speechToCorrect.scores.length - 1;
-  
-    //subtract the last value that was added from the total score
-    speechToCorrect.total_score -= speechToCorrect.scores[lastScoreIndex];
 
-    //delete that value from scores array
-    speechToCorrect.scores.splice(lastScoreIndex, 1);  
-    
-  
-  };
-  
-  
-  
   
    
   /* 
@@ -163,11 +133,7 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
   
   
    
-// insert analytics here...
-  
-  
-  
-  
+
   
   
   /*

@@ -39,6 +39,8 @@ programRatingController.controller('programEval', ['$scope',
     
      
       parseInt($scope[object][index][value] += 1);
+     
+     $scope.$emit("modelUpdated", object, {"index": index, "value": value});
    
    };
 
@@ -49,6 +51,8 @@ programRatingController.controller('programEval', ['$scope',
       var thisSpeaker = $scope.speakerLineup[index];
       
       thisSpeaker.favorite_votes++;
+      
+      $scope.$emit("modelUpdated", "speakerLineup");
       
     };
 
@@ -63,7 +67,7 @@ programRatingController.controller('programEval', ['$scope',
    $scope.rateProgram = function(event) {
     
      var value = event.target.value;
-     console.log(value);
+   
      $scope.programOverallRating.score_instances["r" + value] += 1;
      
      // add only the numeric values to the average of the program
@@ -72,6 +76,8 @@ programRatingController.controller('programEval', ['$scope',
        $scope.programOverallRating.scores.push(value);
        $scope.programOverallRating.total_score += value;
      }
+     
+       $scope.$emit("modelUpdated", "programOverallRating");
 
    };
    

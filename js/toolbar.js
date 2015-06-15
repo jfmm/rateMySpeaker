@@ -141,7 +141,7 @@ toolbarController.controller('toolbarCtrl', ['$scope',
    };
     
 
-  } // end IF
+  } // end loading default data
   
   else 
   {
@@ -394,6 +394,99 @@ toolbarController.controller('toolbarCtrl', ['$scope',
   });
    
    
+   
+   /*
+  * undo button subtracts the last grading and focuses on the previous row so that
+  * a new value can be input
+  */
+  
+  $scope.undo = function() {
+    
+
+    switch($scope.lastModelModified)
+    {
+      case "ratingData": undoSpeakerRatingData();
+      break;
+        
+      case "programEvalData": undoProgramEvalData();
+      break;
+        
+      default: alert("You have not input any data! There's nothing to undo");
+    
+    }
+    
+    
+    if($scope.lastModelModified === "speakerLineup") {
+      console.log("reduce votes");
+    }
+    
+    
+    
+    
+    
+  
+  };
+   
+   
+   
+   $scope.lastModelModified = "";
+   // listen for an update to a data model
+   $scope.$on("modelUpdated", function(event, model, elementData) {
+     //when a data model has been updated, set global variable so that the undo method 
+     // can decide which lower level method to use
+    $scope.lastModelModified = model;
+    $scope.lastModelModifiedElementData = elementData;
+   });
+   
+   
+   
+   
+   /*
+   * Undo method for rating speaker data model
+   */
+   function undoSpeakerRatingData() {
+     
+     if($scope.currentSpeech > 1) {
+    
+        --$scope.currentSpeech;
+      } 
+      
+      else {
+     
+        $scope.currentSpeech = $scope.ratingData.length; // focus the last row
+        $scope.evalCounter--; //update the eval counter
+     
+      }
+    
+    
+  
+    var speechToCorrect = $scope.ratingData[$scope.currentSpeech - 1]; 
+    var lastScoreIndex = speechToCorrect.scores.length - 1;
+  
+    //subtract the last value that was added from the total score
+    speechToCorrect.total_score -= speechToCorrect.scores[lastScoreIndex];
+
+    //delete that value from scores array
+    speechToCorrect.scores.splice(lastScoreIndex, 1);  
+    
+   };
+   
+   
+  
+   
+   /*
+   * Undo method for program overview questions
+   */
+   
+   function undoProgramEvalData() {
+   
+   
+     var index = $scope.lastModelModifiedElementData.index,
+         value = $scope.lastModelModifiedElementData.value;
+     
+     $scope.programEvalData[index][value] -= 1;
+   
+   }
 
  
  }]);
