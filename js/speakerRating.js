@@ -260,10 +260,7 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
   
   }; // analytics method close 
   
-  
-    
-    
-  
+
     
     
   /*
@@ -271,7 +268,7 @@ speakerRatingController.controller('speakerRatingCtrl', ['$scope',
   */
   $scope.isGradingDone = function() {
     //if we're done inputting all evaluations...
-    if($scope.evalCounter >  $scope.numOfEvaluations && $scope.numOfEvaluations !=0) { 
+    if($scope.evalCounter >  $scope.numOfEvaluations && $scope.numOfEvaluations > 0) { 
      
       window.scroll(0,0); // scroll to the top of the page
       return true; // return true so that modal window shows up

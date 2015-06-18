@@ -418,6 +418,9 @@ toolbarController.controller('toolbarCtrl', ['$scope',
       case "programOverallRating": undoProgramRating();
       break;
         
+      case "speakerLineUp": undoHearts();
+      break;
+        
       default: alert("You have not input any data! There's nothing to undo");
     
     }
@@ -480,13 +483,25 @@ toolbarController.controller('toolbarCtrl', ['$scope',
    
    
      var index = $scope.lastModelModifiedElementData.index,
-         value = $scope.lastModelModifiedElementData.value;
+         value = $scope.lastModelModifiedElementData.value,
+         numberToUndo = $scope[$scope.lastModelModified][index][value];
      
+    // this avoids undo button subtracting below 0, thus polluting the data with negative numbers
+        if(numberToUndo > 0) 
+           $scope[$scope.lastModelModified][index][value] -= 1;
 
-      $scope[$scope.lastModelModified][index][value] -= 1;
+   }
+   
+   
+   
+   /*
+   * Undo method for favorite speakers
+   */
+   function undoHearts() {
    
    
    }
+   
    
    
    
@@ -508,6 +523,9 @@ toolbarController.controller('toolbarCtrl', ['$scope',
      $scope[$scope.lastModelModified]["total_score"] -= lastElement;
    
    }
+   
+   
+   
    
 
  

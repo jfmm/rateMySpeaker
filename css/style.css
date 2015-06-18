@@ -455,3 +455,26 @@ div.count {
   width: 35%;
   
 }
+
+
+
+
+/*
+* PRINT STYLES
+*/
+
+@media print {
+  .toolbar {
+  display: none;
+}
+
+.card {
+  border: none;
+  box-shadow: none;
+}
+
+
+
+
+
+}
