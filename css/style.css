@@ -87,7 +87,7 @@ p {
 
 input#numOfEvals { 
   width: 45px;
-  background-color: inherit;
+  background-color: #3F51B5;
   border-top: none;
   border-left: none;
   border-right: none;
